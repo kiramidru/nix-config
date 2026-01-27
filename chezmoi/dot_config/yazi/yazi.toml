@@ -1,0 +1,8 @@
+# yazi.toml
+[mgr]
+show_hidden = true
+
+[opened]
+edit = [
+    { run = '~/dotfiles/.config/yazi/yazi-editor.sh "$@"', desc = "editor", block = true, for = "unix" }
+]

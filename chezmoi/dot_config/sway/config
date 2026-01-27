@@ -1,0 +1,3 @@
+include ~/.config/sway/conf.d/*
+
+output eDP-1 resolution 1920x1080@60Hz position 1920,0

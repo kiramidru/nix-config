@@ -1,0 +1,29 @@
+@mixin box($radius, $px, $py, $top, $right, $bottom, $left) { 
+  border-radius: $radius;
+  background-color: $bg-color;
+  padding: $px $py;
+  margin: $top $right $bottom $left;
+}
+
+@mixin button($radius, $padding, $top, $right, $bottom, $left) {
+  border-radius: $radius;
+  background-color: $bg-color;
+  padding: $padding;
+  margin: $top $right $bottom $left;
+  &:hover {
+      background-color: $accent;
+  }
+}
+
+@mixin slider($radius, $width, $height) {
+  trough {
+    border-radius: $radius;
+    background-color: $accent;
+    min-width: $width;
+    min-height: $height;
+  }
+  highlight, progress {
+    border-radius: $radius;
+    background-color: $primary;
+  }
+}

@@ -1,0 +1,82 @@
+(defwidget panel_launcher []
+    (button
+        :class "launcher_button"
+        :onclick "rofi -show drun &"
+        (image :path "${EWW_CONFIG_DIR}/assets/nixos.svg")
+    )
+)
+
+(defwidget panel_workspaces []
+    (box :class "workspaces"
+       :orientation "h"
+       :space-evenly false
+       :halign "start"
+       :spacing 12
+
+       (for ws in workspace_list
+            (button
+                :class {active_workspace == ws ? "active" : "inactive"}
+            )
+       )
+    )
+)
+
+(defwidget panel_cava []
+  (box
+    :class "cava_box"
+    (label :class "cava" :text cava)
+  )
+)
+
+(defwidget panel_clock []
+    (box :class "clock_box"
+        (label  :text clock_label)
+    )
+)
+
+(defwidget panel_battery []
+    (box :class "battery_box"
+        (image 
+            :path {EWW_BATTERY.BAT1.status == "Charging" ? "${EWW_CONFIG_DIR}/assets/battery/battery-charging.svg" : 
+            EWW_BATTERY.BAT1.capacity == 100 ? "${EWW_CONFIG_DIR}/assets/battery/battery-4.svg" :
+            EWW_BATTERY.BAT1.capacity >= 66 ? "${EWW_CONFIG_DIR}/assets/battery/battery-3.svg" :
+            EWW_BATTERY.BAT1.capacity >= 33 ? "${EWW_CONFIG_DIR}/assets/battery/battery-2.svg" :
+            EWW_BATTERY.BAT1.capacity >= 10 ? "${EWW_CONFIG_DIR}/assets/battery/battery-1.svg" :
+            "${EWW_CONFIG_DIR}/assets/battery/battery-danger.svg"
+            }
+        )
+        (label :text "${EWW_BATTERY.BAT1.capacity}%")
+    )
+)
+
+(defwidget panel_notification []
+    (button
+        :class "notification_button"
+        :onclick "${EWW_CONFIG_DIR}/scripts/launcher.sh notification"
+        (image :path "${EWW_CONFIG_DIR}/assets/notification/notification-muted.svg")
+    )
+)
+
+(defwidget bar []
+    (box
+        :class "center_box"
+        (box
+            :class "left_box"
+            :valign "start"
+            :halign "start"
+            :space-evenly false
+            (panel_launcher)
+            (panel_workspaces)
+        )
+        (box
+            :class "right_box"
+            :valign "start"
+            :halign "end" 
+            :space-evenly false
+            (panel_cava)
+            (panel_clock)
+            (panel_battery)
+            (panel_notification)
+        )
+    )
+)

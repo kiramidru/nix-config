@@ -1,0 +1,133 @@
+(defwidget panel_notch []
+    (box 
+        :class "notch_box"
+        :valign "start"
+        (notch_window)
+        (notch_power)
+        (notch_settings)
+    )
+)
+
+(defwidget notch_window []
+    (box 
+        :class "window_box"
+        :visible {notch_state == "window" ? true : false}
+        (label 
+            :limit-width 40
+            :text window)
+    )
+)
+
+(defwidget notch_power []
+    (box
+        :class "power_box"
+        :visible {notch_state == "power" ? true : false}
+        :orientation "h"
+
+        (button 
+            :class "power_button"
+            :onclick "hyprlock"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/lock.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "systemctl suspend"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/sleep.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "swaymsg exit"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/logout.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "systemctl reboot"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/restart.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "systemctl poweroff"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/power-off.svg")
+        )
+    )
+)
+
+(defwidget notch_settings []
+    (box 
+        :class "settings_box"
+        :spacing 10
+        :orientation "v"
+        :visible {notch_state == "settings" ? true : false}
+        (box :class "brightness_bar" 
+            :spacing 20 
+            :space-evenly false 
+            :vexpand false 
+            :hexpand false
+            (image :path "${EWW_CONFIG_DIR}/assets/brightness.svg")
+            (scale :orientation "h" 
+                :max 100 
+                :min 0 
+                :value {volume}
+            )
+        )
+        (label :class "song-title" :text song_title :limit-width 25)
+        (label :class "artist" :text song_artist :limit-width 25)
+      (box :class "controls" :orientation "h"
+        (button :onclick "playerctl previous" "󰒮")
+        (button :onclick "playerctl play-pause" {player_status == "Playing" ? "󰏤" : "󰐊"})
+        (button :onclick "playerctl next" "󰒭")
+      )
+        (box :class "volume_bar" 
+            :spacing 20 
+            :space-evenly false 
+            :vexpand false 
+            :hexpand false
+            (image :path "${EWW_CONFIG_DIR}/assets/volume.svg")
+            (scale :orientation "h" 
+                :max 100 
+                :min 0 
+                :value {volume}
+            )
+        )
+    )
+)
+
+(defwidget notch_notification []
+    (box 
+        :class "notification_box"
+        :visible {notch_state == "notification" ? true : false}
+        (label 
+            :limit-width 40
+            :text window)
+    )
+)
+
+(defwidget panel_settings [] 
+    (button
+        :class "settings_button"
+        :valign "start"
+        :onclick "${EWW_CONFIG_DIR}/scripts/notch.sh settings"
+        (image :path "${EWW_CONFIG_DIR}/assets/settings.svg")
+    )
+)
+
+(defwidget panel_network [] 
+    (button
+        :class "network_button"
+        :valign "start"
+        :onclick "${EWW_CONFIG_DIR}/scripts/wifi.sh"
+        (image :path "${EWW_CONFIG_DIR}/assets/network/wired.svg")
+    )
+)
+
+(defwidget notch []
+    (box 
+        :class "center_box" 
+        :valign "start" 
+        :halign "center"
+        :space-evenly false
+        (panel_settings)
+        (panel_notch)
+        (panel_network)
+    )
+)

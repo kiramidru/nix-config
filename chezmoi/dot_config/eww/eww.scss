@@ -1,0 +1,12 @@
+* {
+  all: unset;
+  font-size: 14px;
+  font-weight: bold;
+  font-family: "Iosevka Nerd Font";
+}
+
+@import "./scss/variables.scss";
+@import "./scss/common.scss";
+@import "./scss/bar.scss";
+@import "./scss/notch.scss";
+@import "./scss/notification.scss";
