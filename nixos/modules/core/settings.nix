@@ -16,6 +16,8 @@
       "wheel"
       "networkmanager"
       "seat"
+      "adbusers"
+      "kvm"
     ];
     shell = pkgs.fish;
   };

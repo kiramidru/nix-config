@@ -9,9 +9,7 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
-    ];
+    extraPortals = [ pkgs.xdg-desktop-portal-wlr ];
   };
 
   services.seatd.enable = true;
@@ -26,12 +24,8 @@
   };
   security.polkit.enable = true;
 
-  services.gvfs.enable = true;
-  services.udisks2.enable = true;
-
   environment.systemPackages = with pkgs; [
     lxqt.lxqt-policykit
-    glib
     brightnessctl
     cava
     eww
@@ -44,6 +38,7 @@
     swaylock
     tuigreet
     wlogout
+    wlsunset
     yazi
   ];
 }

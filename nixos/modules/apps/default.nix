@@ -5,5 +5,6 @@
     ./cli.nix
     ./gaming
     ./gui.nix
+    ./spotify.nix
   ];
 }
