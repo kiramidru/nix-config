@@ -1,13 +1,14 @@
 { lib, ... }:
 {
   networking.useDHCP = lib.mkDefault true;
-  networking.networkmanager.enable = true;
-  environment.systemPackages = [
-    #pkgs.impala
-  ];
+  networking.wireless.iwd.enable = true;
+  networking.networkmanager.wifi.backend = "iwd";
 
   # Firewall
   networking.firewall.enable = true;
-  networking.firewall.allowedTCPPorts = [ 8080 ];
+  networking.firewall.allowedTCPPorts = [
+    8080
+    22 # SSH
+  ];
   networking.firewall.allowedUDPPorts = [ ];
 }

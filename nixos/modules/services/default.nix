@@ -2,6 +2,6 @@
 {
   imports = [
     # ./docker.nix
-    ./tailscale.nix
+    # ./tailscale.nix
   ];
 }

@@ -15,7 +15,6 @@
     ext4magic
     extundelete
     ghidra-bin
-    git
     pdf-parser
     sleuthkit
 

@@ -2,7 +2,6 @@
 {
   imports = [
     ./audio.nix
-    ./bluetooth.nix
     ./boot.nix
     ./documentation.nix
     ./garbage.nix

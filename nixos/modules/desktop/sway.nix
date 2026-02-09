@@ -39,6 +39,5 @@
     tuigreet
     wlogout
     wlsunset
-    yazi
   ];
 }
