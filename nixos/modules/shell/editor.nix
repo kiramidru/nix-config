@@ -12,5 +12,8 @@
     # Nix
     nil
     nixfmt
+
+    #JSON
+    jq
   ];
 }

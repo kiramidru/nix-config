@@ -4,12 +4,15 @@
     blender
     discord
     easyeffects
+    fontforge-gtk
     foliate
-    gimp
     godot
+    inkscape
+    lmstudio
     onlyoffice-desktopeditors
     planify
     postman
+    qbittorrent
     telegram-desktop
     obsidian
     zotero

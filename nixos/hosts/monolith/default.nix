@@ -7,6 +7,7 @@
     ../../modules/desktop
     ../../modules/dev
     ../../modules/hardware
+    ../../modules/nixvim
     ../../modules/services
     ../../modules/shell
     ../../modules/system
