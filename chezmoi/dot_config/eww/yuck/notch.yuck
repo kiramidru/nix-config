@@ -115,7 +115,7 @@
     (button
         :class "network_button"
         :valign "start"
-        :onclick "${EWW_CONFIG_DIR}/scripts/wifi.sh"
+        :onclick "foot --title=impala-float impala &"
         (image :path "${EWW_CONFIG_DIR}/assets/network/wired.svg")
     )
 )

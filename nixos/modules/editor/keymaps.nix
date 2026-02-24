@@ -5,7 +5,7 @@
       {
         mode = "n";
         key = "<leader>pv";
-        action = "<cmd>Ex<CR>";
+        action = "<cmd>Ex<cr>";
         options.desc = "Open Netrw (Project View)";
       }
 

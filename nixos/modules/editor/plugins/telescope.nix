@@ -1,3 +1,4 @@
+{ ... }:
 {
   programs.nixvim = {
     plugins.telescope = {
@@ -13,7 +14,7 @@
       extensions.fzf-native.enable = true;
 
       keymaps = {
-        "<C-p>" = {
+        "<leader>ff" = {
           action = "find_files";
           options.desc = "Telescope Find Files";
         };

@@ -4,11 +4,13 @@
     plugins.neo-tree = {
       enable = true;
 
-      filesystem = {
-        filteredItems = {
-          visible = true;
-          hideDotfiles = false;
-          hideGitignored = true;
+      settings = {
+        filesystem = {
+          filtered_items = {
+            hide_gitignored = true;
+            hide_dotfiles = false;
+            visible = true;
+          };
         };
       };
     };
@@ -17,7 +19,7 @@
       {
         mode = "n";
         key = "<C-n>";
-        action = ":Neotree filesystem reveal left<CR>";
+        action = "<cmd>Neotree reveal left<cr>";
         options = {
           silent = true;
           desc = "Toggle Neo-tree";

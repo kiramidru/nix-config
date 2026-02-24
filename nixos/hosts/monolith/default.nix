@@ -1,4 +1,4 @@
-{ self, config, ... }:
+{ config, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -6,8 +6,8 @@
     ../../modules/core
     ../../modules/desktop
     ../../modules/dev
+    ../../modules/editor
     ../../modules/hardware
-    ../../modules/nixvim
     ../../modules/services
     ../../modules/shell
     ../../modules/system

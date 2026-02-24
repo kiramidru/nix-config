@@ -1,8 +1,29 @@
-# yazi.toml
-[mgr]
+[manager]
 show_hidden = true
 
-[opened]
+[opener]
+zathura = [
+    { run = 'zathura "$@"', desc = "Zathura", detach = true, for = "unix" }
+]
 edit = [
-    { run = '~/dotfiles/.config/yazi/yazi-editor.sh "$@"', desc = "editor", block = true, for = "unix" }
+    { run = '~/dotfiles/.config/yazi/yazi-editor.sh "$@"', desc = "Editor", block = true, for = "unix" }
+]
+
+open = [
+    { run = 'xdg-open "$@"', desc = "System Default", detach = true }
+]
+extract = [
+    { run = 'ouch decompress "$@"', desc = "Extract archive" }
+]
+
+[open]
+rules = [
+    { mime = "application/pdf", use = [ "zathura", "edit" ] },
+    { mime = "application/epub+zip", use = [ "zathura", "edit" ] }, 
+    { mime = "text/*", use = "edit" },
+
+    { mime = "{image,video,audio}/*", use = "open" },
+
+    { mime = "application/{zip,rar,7z*,tar*}", use = "extract" },
+    { name = "*", use = [ "open", "edit" ] }
 ]
