@@ -7,7 +7,6 @@
     ../../modules/desktop
     ../../modules/dev
     ../../modules/editor
-    ../../modules/hardware
     ../../modules/services
     ../../modules/shell
     ../../modules/system

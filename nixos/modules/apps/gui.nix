@@ -4,6 +4,7 @@
     blender
     discord
     easyeffects
+    evillimiter
     fontforge-gtk
     foliate
     godot

@@ -20,7 +20,6 @@
         "cookiebanners.service.mode.privateBrowsing" = 2;
         "cookiebanners.service.mode" = 2;
         "privacy.donottrackheader.enabled" = true;
-        "privacy.resistFingerprinting" = true;
 
         "privacy.trackingprotection.enabled" = true;
         "privacy.trackingprotection.fingerprinting.enabled" = true;

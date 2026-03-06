@@ -70,10 +70,4 @@ lib.mkIf (config.hostSpec.role == "laptop") {
     "vm.dirty_writeback_centisecs" = 6000;
     "kernel.nmi_watchdog" = 0;
   };
-
-  zramSwap = {
-    enable = true;
-    algorithm = "lz4";
-    memoryPercent = 25;
-  };
 }
