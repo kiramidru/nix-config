@@ -1,14 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    bat
-    fastfetch
-    fzf
-    ripgrep
-
-    age
-    chezmoi
-
     fishPlugins.hydro
     fishPlugins.sponge
   ];

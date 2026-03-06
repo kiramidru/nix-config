@@ -1,7 +1,8 @@
 { ... }:
 {
   imports = [
-    # ./docker.nix
-    # ./tailscale.nix
+    ./docker.nix
+    ./system76.nix
+    ./ssh.nix
   ];
 }
