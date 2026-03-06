@@ -2,7 +2,7 @@
 {
   imports = [
     ./docker.nix
-    ./system76.nix
+    ./scheduling.nix
     ./ssh.nix
   ];
 }
