@@ -1,8 +1,9 @@
 { config, ... }:
 {
   imports = [
-    ./hardware-configuration.nix
+    ./hardware.nix
     ./home.nix
+    ./disko-config.nix
     ../../modules
   ];
 

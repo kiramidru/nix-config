@@ -24,14 +24,4 @@
       };
     };
   };
-
-  systemd.services.greetd.serviceConfig = {
-    Type = "simple";
-    StandardInput = "tty";
-    StandardOutput = "tty";
-    StandardError = "journal";
-    TTYReset = true;
-    TTYVHangup = true;
-    TTYVTDisallocate = true;
-  };
 }

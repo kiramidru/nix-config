@@ -2,14 +2,11 @@
 {
   programs.fish = {
     enable = true;
+
     plugins = [
       {
         name = "hydro";
         src = pkgs.fishPlugins.hydro.src;
-      }
-      {
-        name = "sponge";
-        src = pkgs.fishPlugins.sponge.src;
       }
     ];
 
@@ -21,7 +18,6 @@
 
     interactiveShellInit = ''
       set -g fish_greeting ""
-      set -g sponge_purge_only_on_exit false
 
       # Hydro prompt settings
       set -g hydro_symbol_prompt "❯"

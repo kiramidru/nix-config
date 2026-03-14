@@ -5,8 +5,6 @@
     enableFishIntegration = true;
   };
 
-  programs.bat.enable = true;
-
   programs.btop = {
     enable = true;
     settings = {
@@ -16,15 +14,13 @@
   };
 
   home.packages = with pkgs; [
+    bat
     bluetui
-    ripgrep
+    fastfetch
     fd
     impala
-
-    fastfetch
-    manix
-    impala
     ouch
+    ripgrep
     sioyek
     yazi
   ];
