@@ -1,0 +1,47 @@
+.notch_box {
+  background-color: $bg-color;
+  border-radius: 0 0 24px 24px;
+}
+
+.window_box {
+  @include box(24px, 12px, 96px, 0, 0, 0, 0);
+}
+
+.power_box {
+  @include box(24px, 16px, 16px, 0, 0, 0, 0);
+  .power_button {
+    @include button(16px, 16px, 4px, 0, 0, 4px);
+  }
+}
+
+.settings_box {
+  @include box(24px, 24px, 48px, 0, 0, 0, 0);
+}
+
+.settings_button {
+  @include button(9999px, 8px, 4px, 4px, 0, 0);
+}
+
+.settings_box scale {
+  border: none;
+}
+
+.settings_box scale trough {
+  background-color: #484848;
+  border-radius: 10px;
+  min-width: 320px;
+  min-height: 4px;
+}
+
+.settings_box highlight {
+  border-radius: 10px;
+  background-color: #cfb6fb;
+}
+
+.network_box {
+  @include box(24px, 12px, 96px, 0, 0, 0, 0);
+}
+
+.network_button {
+  @include button(9999px, 8px, 4px, 0, 0, 4px);
+}
