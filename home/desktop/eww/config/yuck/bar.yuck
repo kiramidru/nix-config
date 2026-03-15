@@ -21,12 +21,6 @@
     )
 )
 
-(defwidget panel_cava []
-  (box
-    :class "cava_box"
-    (label :class "cava" :text cava)
-  )
-)
 
 (defwidget panel_clock []
     (box :class "clock_box"
@@ -73,7 +67,6 @@
             :valign "start"
             :halign "end" 
             :space-evenly false
-            (panel_cava)
             (panel_clock)
             (panel_battery)
             (panel_notification)

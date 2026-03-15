@@ -4,13 +4,5 @@
 (defpoll    clock_label       :interval "5s"  `date "+%H:%M"`)
 
 (deflisten  active_workspace  :initial   1     `$HOME/.config/eww/scripts/workspace.sh`)
-(deflisten  cava              :initial   "" `$HOME/.config/eww/scripts/cava.sh`)
 (deflisten  window            :initial   "kira@nix"  `$HOME/.config/eww/scripts/window.sh`)
 (deflisten  notification      :initial   "" `$HOME/.config/eww/scripts/notification.sh`)
-
-(deflisten player_status :initial "Stopped"
-"playerctl metadata --format '{{status}}' --follow || echo 'Stopped'")
-(deflisten song_title    :initial "No Music Playing"
-"playerctl metadata --format '{{title}}' --follow || echo 'No Music Playing'")
-(deflisten song_artist   :initial "Unknown Artist"
-"playerctl metadata --format '{{artist}}' --follow || echo 'Unknown Artist'")

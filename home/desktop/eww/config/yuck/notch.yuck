@@ -4,7 +4,6 @@
         :valign "start"
         (notch_window)
         (notch_power)
-        (notch_settings)
     )
 )
 
@@ -48,30 +47,6 @@
             :class "power_button"
             :onclick "systemctl poweroff"
             (image :path "${EWW_CONFIG_DIR}/assets/power/power-off.svg")
-        )
-    )
-)
-
-(defwidget notch_settings []
-    (box 
-        :class "settings_box"
-        :spacing 10
-        :orientation "v"
-        :visible {notch_state == "settings" ? true : false}
-        (box :class "brightness_bar" 
-            :spacing 20 
-            :space-evenly false 
-            :vexpand false 
-            :hexpand false
-            (image :path "${EWW_CONFIG_DIR}/assets/brightness.svg")
-        )
-        (label :class "song-title" :text song_title :limit-width 25)
-        (label :class "artist" :text song_artist :limit-width 25)
-        
-        (box :class "controls" :orientation "h"
-            (button :onclick "playerctl previous" "󰒮")
-            (button :onclick "playerctl play-pause" {player_status == "Playing" ? "󰏤" : "󰐊"})
-            (button :onclick "playerctl next" "󰒭")
         )
     )
 )

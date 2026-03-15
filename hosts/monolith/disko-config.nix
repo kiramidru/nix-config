@@ -4,7 +4,6 @@
     disk = {
       main = {
         type = "disk";
-        # Matched to your lsblk output
         device = "/dev/nvme0n1";
         content = {
           type = "gpt";
@@ -16,10 +15,7 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = [
-                  "fmask=0077"
-                  "dmask=0077"
-                ];
+                mountOptions = [ "umask=0077" ];
               };
             };
             swap = {
