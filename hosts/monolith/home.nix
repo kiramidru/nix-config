@@ -7,7 +7,9 @@
   home-manager = {
     useGlobalPkgs = true;
     useUserPackages = true;
+
     backupFileExtension = "hm-backup";
+    overwriteBackup = true;
 
     extraSpecialArgs = {
       inherit inputs;
@@ -16,8 +18,6 @@
 
     users."${config.hostSpec.username}" = {
       imports = [
-        inputs.nixvim.homeModules.nixvim
-        inputs.stylix.homeModules.stylix
         inputs.agenix.homeManagerModules.default
         ../../home
       ];
@@ -29,7 +29,7 @@
       home = {
         inherit (config.hostSpec) username;
         homeDirectory = "/home/${config.hostSpec.username}";
-        stateVersion = "24.11";
+        stateVersion = "25.11";
       };
 
       programs.home-manager.enable = true;

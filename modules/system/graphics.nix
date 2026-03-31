@@ -1,16 +1,6 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  boot.initrd.kernelModules = [
-    "amdgpu"
-  ];
-
-  hardware.graphics = {
-    enable = true;
-    extraPackages = with pkgs; [
-      libva
-      mesa
-    ];
-  };
+  boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.blacklistedKernelModules = [
     "nouveau"
@@ -19,5 +9,6 @@
     "nvidia_modeset"
   ];
 
+  hardware.graphics.enable = true;
   hardware.enableRedistributableFirmware = true;
 }

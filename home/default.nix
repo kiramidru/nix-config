@@ -1,9 +1,9 @@
 { ... }:
 {
   imports = [
-    ./desktop
-    ./editors
-    ./shell
+    ./base/core
+    ./base/gui
+    ./base/tui
     ./environment.nix
     ./theme.nix
   ];

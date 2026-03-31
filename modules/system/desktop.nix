@@ -1,25 +1,30 @@
 { pkgs, ... }:
 {
-  services.xserver.enable = false;
+  security.polkit.enable = true;
 
   xdg.portal = {
     enable = true;
     wlr.enable = true;
     extraPortals = [
-      pkgs.xdg-desktop-portal-wlr
       pkgs.xdg-desktop-portal-gtk
     ];
+
     config.common.default = "*";
   };
 
-  services.seatd.enable = true;
-  security.polkit.enable = true;
+  programs.uwsm = {
+    enable = true;
+    waylandCompositors.sway = {
+      prettyName = "Sway";
+      binPath = "${pkgs.sway}/bin/sway";
+    };
+  };
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --cmd sway";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd 'uwsm start sway.desktop'";
         user = "greeter";
       };
     };

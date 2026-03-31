@@ -9,13 +9,23 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    disko = {
-      url = "github:nix-community/disko";
+    catppuccin = {
+      url = "github:catppuccin/nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:danth/stylix";
+    lanzaboote = {
+      url = "github:nix-community/lanzaboote";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -33,6 +43,16 @@
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    blender-bin = {
+      url = "github:edolstra/nix-warez?dir=blender";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    wallpapers = {
+      url = "github:kiramidru/nix-wallpapers";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =
@@ -40,11 +60,12 @@
       self,
       nixpkgs,
       home-manager,
-      disko,
-      stylix,
       agenix,
+      disko,
+      lanzaboote,
       nixvim,
       spicetify-nix,
+      wallpapers,
       ...
     }@inputs:
     {
@@ -54,13 +75,13 @@
           modules = [
             {
               nixpkgs.hostPlatform = "x86_64-linux";
-              nixpkgs.overlays = [ (import ./overlays) ];
             }
             ./hosts/monolith
+
             home-manager.nixosModules.home-manager
-            disko.nixosModules.default
             agenix.nixosModules.default
-            spicetify-nix.nixosModules.default
+            disko.nixosModules.default
+            lanzaboote.nixosModules.lanzaboote
           ];
         };
       };

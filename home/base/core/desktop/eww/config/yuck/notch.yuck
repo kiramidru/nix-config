@@ -1,0 +1,62 @@
+(defwidget panel_notch []
+    (box 
+        :class "notch_box"
+        :valign "start"
+        (notch_window)
+        (notch_power)
+    )
+)
+
+(defwidget notch_window []
+    (box 
+        :class "window_box"
+        :visible {notch_state == "window" ? true : false}
+        (label 
+            :limit-width 40
+            :text window)
+    )
+)
+
+(defwidget notch_power []
+    (box
+        :class "power_box"
+        :visible {notch_state == "power" ? true : false}
+        :orientation "h"
+
+        (button 
+            :class "power_button"
+            :onclick "hyprlock"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/lock.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "systemctl suspend"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/sleep.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "swaymsg exit"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/logout.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "systemctl reboot"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/restart.svg")
+        )
+        (button
+            :class "power_button"
+            :onclick "systemctl poweroff"
+            (image :path "${EWW_CONFIG_DIR}/assets/power/power-off.svg")
+        )
+    )
+)
+
+(defwidget notch []
+    (box 
+        :class "center_box" 
+        :valign "start" 
+        :halign "center"
+        :space-evenly false
+        (panel_notch)
+    )
+)

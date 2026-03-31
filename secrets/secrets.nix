@@ -15,6 +15,15 @@ in
     monolith
     kira
   ];
-
   "github-token.age".publicKeys = users;
+  "proton-vpn-key.age".publicKeys = systems;
+
+  "sb-db-key.age".publicKeys = [
+    kira
+    monolith
+  ];
+  "sb-db-cert.age".publicKeys = [
+    kira
+    monolith
+  ];
 }
