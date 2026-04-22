@@ -1,10 +1,8 @@
 { ... }:
 {
   imports = [
-    ./base/core
-    ./base/gui
-    ./base/tui
-    ./environment.nix
+    ./shared
+    ./desktop
     ./theme.nix
   ];
 }

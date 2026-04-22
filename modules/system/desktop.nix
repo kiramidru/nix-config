@@ -12,19 +12,14 @@
     config.common.default = "*";
   };
 
-  programs.uwsm = {
-    enable = true;
-    waylandCompositors.sway = {
-      prettyName = "Sway";
-      binPath = "${pkgs.sway}/bin/sway";
-    };
-  };
+  programs.sway.enable = true;
+  programs.uwsm.enable = true;
 
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd 'uwsm start sway.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd 'uwsm start sway'";
         user = "greeter";
       };
     };

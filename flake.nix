@@ -19,6 +19,7 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO: Use for generating ISOs and other image formats
     nixos-generators = {
       url = "github:nix-community/nixos-generators";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -44,13 +45,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    blender-bin = {
-      url = "github:edolstra/nix-warez?dir=blender";
+    warehouse-nix = {
+      url = "github:kiramidru/warehouse-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    # TODO: Use for wallpaper management
     wallpapers = {
       url = "github:kiramidru/nix-wallpapers";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    playit-nix = {
+      url = "github:pedorich-n/playit-nixos-module";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -63,19 +70,14 @@
       agenix,
       disko,
       lanzaboote,
-      nixvim,
-      spicetify-nix,
-      wallpapers,
       ...
     }@inputs:
     {
       nixosConfigurations = {
         monolith = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs; };
+
           modules = [
-            {
-              nixpkgs.hostPlatform = "x86_64-linux";
-            }
             ./hosts/monolith
 
             home-manager.nixosModules.home-manager

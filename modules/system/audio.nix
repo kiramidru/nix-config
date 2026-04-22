@@ -1,5 +1,5 @@
-{ lib, config, ... }:
-lib.mkIf (config.hostSpec.role != "server") {
+{ pkgs, ... }:
+{
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -8,4 +8,8 @@ lib.mkIf (config.hostSpec.role != "server") {
     pulse.enable = true;
     wireplumber.enable = true;
   };
+
+  environment.systemPackages = with pkgs; [
+    pulseaudio
+  ];
 }

@@ -9,6 +9,9 @@
     "nvidia_modeset"
   ];
 
-  hardware.graphics.enable = true;
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
   hardware.enableRedistributableFirmware = true;
 }

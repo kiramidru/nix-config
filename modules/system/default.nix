@@ -10,5 +10,7 @@
     ./locale.nix
     ./memory.nix
     ./networking.nix
+    ./performance.nix
+    ./time.nix
   ];
 }

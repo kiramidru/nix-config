@@ -1,4 +1,4 @@
-{ config, ... }:
+{ ... }:
 {
   boot = {
     initrd = {
@@ -6,24 +6,33 @@
       systemd.enable = true;
     };
 
-    loader.efi.canTouchEfiVariables = true;
-
-    lanzaboote = {
-      enable = true;
-      pkiBundle = "/etc/secureboot";
+    loader = {
+      systemd-boot.enable = true;
+      systemd-boot.consoleMode = "0";
+      efi.canTouchEfiVariables = true;
     };
 
     tmp.cleanOnBoot = true;
+    kernelParams = [
+      "quiet"
+      "loglevel=3"
+      "vt.global_cursor_default=0"
+      "tpm_tis.interrupts=0"
+      "udev.log_level=3"
+      "rd.systemd.show_status=false"
+      "rd.udev.log_level=3"
+
+      "acpi.debug_layer=0"
+      "acpi.debug_level=0"
+
+      "8250.nr_uarts=0"
+    ];
+
+    consoleLogLevel = 0;
+
+    blacklistedKernelModules = [
+      "ledtrig_audio"
+      "serial8250"
+    ];
   };
-
-  age.secrets.sb-db-key.file = ../../secrets/sb-db-key.age;
-  age.secrets.sb-db-cert.file = ../../secrets/sb-db-cert.age;
-
-  systemd.tmpfiles.rules = [
-    "d /etc/secureboot 0755 root root -"
-    "d /etc/secureboot/keys 0755 root root -"
-    "d /etc/secureboot/keys/db 0755 root root -"
-    "L+ /etc/secureboot/keys/db/db.key - - - - ${config.age.secrets.sb-db-key.path}"
-    "L+ /etc/secureboot/keys/db/db.pem - - - - ${config.age.secrets.sb-db-cert.path}"
-  ];
 }

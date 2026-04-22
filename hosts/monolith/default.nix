@@ -13,6 +13,5 @@
     role = "laptop";
   };
 
-  networking.hostName = config.hostSpec.hostName;
   system.stateVersion = "25.11";
 }

@@ -5,7 +5,7 @@ let
   systems = [ monolith ];
 
   # Personal User Key (from ~/.ssh/id_ed25519.pub)
-  kira = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGhN0w7XaJwQMbU9l8lV+Ti/gpHVpqZ9xcoUVrElLfZc kira@monolith";
+  kira = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPEGQnYQwdqRMjdXjav4ldSHFddHCHpWQu889W0yzjAC kira@monolith";
 
   users = [ kira ];
 
@@ -15,15 +15,9 @@ in
     monolith
     kira
   ];
-  "github-token.age".publicKeys = users;
+  "github-token.age".publicKeys = [
+    monolith
+    kira
+  ];
   "proton-vpn-key.age".publicKeys = systems;
-
-  "sb-db-key.age".publicKeys = [
-    kira
-    monolith
-  ];
-  "sb-db-cert.age".publicKeys = [
-    kira
-    monolith
-  ];
 }

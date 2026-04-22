@@ -9,7 +9,6 @@
     useUserPackages = true;
 
     backupFileExtension = "hm-backup";
-    overwriteBackup = true;
 
     extraSpecialArgs = {
       inherit inputs;
@@ -19,12 +18,10 @@
     users."${config.hostSpec.username}" = {
       imports = [
         inputs.agenix.homeManagerModules.default
-        ../../home
+        "${inputs.self}/home"
       ];
 
-      age.secrets.github-token = {
-        file = ../../secrets/github-token.age;
-      };
+      age.secrets.github-token.file = inputs.self + "/secrets/github-token.age";
 
       home = {
         inherit (config.hostSpec) username;

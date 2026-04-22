@@ -2,7 +2,7 @@
 {
   imports = [
     ./core
-    ./programs/common.nix
+    ./programs
     ./services
     ./system
   ];

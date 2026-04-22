@@ -1,6 +1,0 @@
-{ ... }:
-{
-  services.swayidle = {
-    enable = true;
-  };
-}

@@ -1,11 +1,12 @@
 { ... }:
 {
   imports = [
-    ./docker.nix
-    ./fail2ban.nix
-    ./scheduling.nix
-    ./ssh.nix
-    ./tailscale.nix
-    ./wireguard.nix
+    ./maintenance
+    ./memory
+    ./networking
+    ./sync
+    ./virtualization
+    ./dbus.nix
+    ./ollama.nix
   ];
 }
