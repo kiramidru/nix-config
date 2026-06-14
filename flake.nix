@@ -14,17 +14,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    lanzaboote = {
-      url = "github:nix-community/lanzaboote";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    # TODO: Use for generating ISOs and other image formats
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     disko = {
       url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -40,13 +29,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    haumea = {
+      url = "github:nix-community/haumea";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    warehouse-nix = {
-      url = "github:kiramidru/warehouse-nix";
+    zen-browser = {
+      url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -56,8 +50,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    playit-nix = {
-      url = "github:pedorich-n/playit-nixos-module";
+    warehouse-nix = {
+      url = "github:kiramidru/warehouse-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
@@ -69,22 +63,29 @@
       home-manager,
       agenix,
       disko,
-      lanzaboote,
+      haumea,
       ...
     }@inputs:
+    let
+      src = haumea.lib.load {
+        src = ./src;
+        loader = _: path: path;
+      };
+    in
     {
       nixosConfigurations = {
         monolith = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = { inherit inputs src; };
 
           modules = [
-            ./hosts/monolith
+            { nixpkgs.hostPlatform = "x86_64-linux"; }
+            src.hosts.monolith.configuration
 
             home-manager.nixosModules.home-manager
             agenix.nixosModules.default
             disko.nixosModules.default
-            lanzaboote.nixosModules.lanzaboote
-          ];
+          ]
+          ++ (builtins.attrValues src.modules.core);
         };
       };
     };
