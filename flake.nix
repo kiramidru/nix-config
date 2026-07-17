@@ -35,7 +35,11 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    preservation.url = "github:nix-community/preservation";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
 
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
@@ -80,7 +84,7 @@
       haumea,
       agenix,
       disko,
-      preservation,
+      impermanence,
       secrets-nix,
       wallpapers,
       ...
@@ -112,7 +116,7 @@
             home-manager.nixosModules.home-manager
             agenix.nixosModules.default
             disko.nixosModules.default
-            preservation.nixosModules.default
+            impermanence.nixosModules.default
 
             {
               _module.args.secrets-nix = secrets-nix;
