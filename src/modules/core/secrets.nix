@@ -1,7 +1,6 @@
 { inputs, ... }:
-
 {
-  age.identityPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
+  age.identityPaths = [ "/persist/etc/ssh/ssh_host_ed25519_key" ];
 
   age.secrets = {
     "root-password" = {
