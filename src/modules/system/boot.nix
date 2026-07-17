@@ -7,8 +7,11 @@
     };
 
     loader = {
-      systemd-boot.enable = true;
-      systemd-boot.consoleMode = "0";
+      systemd-boot = {
+        enable = true;
+        consoleMode = "0";
+        configurationLimit = 3;
+      };
       efi.canTouchEfiVariables = true;
     };
 
