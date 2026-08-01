@@ -65,6 +65,12 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
+    gaming-nix = {
+      url = "github:kiramidru/gaming-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-parts.follows = "flake-parts";
+    };
+
     wallpapers = {
       url = "github:kiramidru/wallpapers";
       flake = false;
