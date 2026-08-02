@@ -4,6 +4,5 @@
     thunderbird
     obsidian
     zotero
-    planify
   ];
 }

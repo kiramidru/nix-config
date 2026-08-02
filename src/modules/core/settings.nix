@@ -20,6 +20,10 @@
     ];
   };
 
+  security.sudo.extraConfig = ''
+    Defaults lecture = never
+  '';
+
   users.mutableUsers = false;
   users.users.root = {
     hashedPasswordFile = config.age.secrets.root-password.path;
@@ -30,7 +34,6 @@
     isNormalUser = true;
     extraGroups = [
       "wheel"
-      "docker"
     ];
 
     shell = pkgs.fish;
