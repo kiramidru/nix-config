@@ -6,5 +6,6 @@
     fastfetch
     ripgrep
     xh
+    gh
   ];
 }

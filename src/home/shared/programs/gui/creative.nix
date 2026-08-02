@@ -6,6 +6,5 @@
     godot_4
     inkscape
     krita
-    davinci-resolve
   ];
 }

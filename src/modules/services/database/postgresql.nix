@@ -2,7 +2,7 @@
 
 {
   services.postgresql = {
-    enable = false;
+    enable = true;
 
     package = pkgs.postgresql_18;
 
