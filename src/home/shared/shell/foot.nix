@@ -6,7 +6,6 @@
     settings = {
       main = {
         pad = "8x8";
-        font = "JetBrains Mono:size=10";
       };
 
       scrollback = {
