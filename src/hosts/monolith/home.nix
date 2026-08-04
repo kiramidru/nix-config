@@ -21,6 +21,7 @@
         inputs.agenix.homeManagerModules.default
         inputs.spicetify-nix.homeManagerModules.default
         inputs.nixvim.homeModules.nixvim
+        inputs.stylix.homeModules.stylix
 
         src.home.users.${config.hostSpec.username}
       ];

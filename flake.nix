@@ -15,8 +15,8 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    catppuccin = {
-      url = "github:catppuccin/nix";
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -104,10 +104,9 @@
       };
 
       pathing = import ./src/lib/pathing.nix { inherit lib; };
-      catPrune = import ./src/lib/cat-prune.nix { inherit lib; };
 
       src = lib.recursiveUpdate baseSrc {
-        lib = lib.recursiveUpdate pathing catPrune;
+        lib = pathing;
       };
     in
     {

@@ -2,45 +2,50 @@
   inputs,
   pkgs,
   config,
-  src,
   ...
 }:
 {
-  imports = [
-    (src.lib.catppuccinPrune {
-      src = inputs.catppuccin;
-      ignoreList = [ "vscode.nix" ];
-    })
-  ];
-
-  catppuccin = {
+  stylix = {
     enable = true;
-    autoEnable = true;
-    flavor = "mocha";
-    accent = "sapphire";
-  };
+    image = "${inputs.wallpapers}/witch.jpg";
+    polarity = "dark";
+    overlays.enable = false;
 
-  gtk = {
-    enable = true;
-    gtk4.theme = config.gtk.theme;
-  };
+    cursor = {
+      name = "Bibata-Original-Classic";
+      package = pkgs.bibata-cursors;
+      size = 24;
+    };
 
-  qt = {
-    enable = true;
-    platformTheme.name = "gtk3";
-    style.name = "kvantum";
+    fonts = {
+      monospace = {
+        package = pkgs.nerd-fonts.jetbrains-mono;
+        name = "JetBrainsMono Nerd Font";
+      };
+      sansSerif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Sans";
+      };
+      serif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Serif";
+      };
+      emoji = {
+        package = pkgs.noto-fonts-color-emoji;
+        name = "Noto Color Emoji";
+      };
+
+      sizes = {
+        terminal = 10;
+        applications = 11;
+        desktop = 10;
+        popups = 10;
+      };
+    };
   };
+  home.pointerCursor.enable = true;
 
   dconf.settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-
-  home.pointerCursor = {
-    enable = true;
-    name = "Bibata-Original-Classic";
-    package = pkgs.bibata-cursors;
-    gtk.enable = true;
-    x11.enable = true;
-    size = 24;
-  };
 
   xdg.configFile."uwsm/env".source =
     "${config.home.sessionVariablesPackage}/etc/profile.d/hm-session-vars.sh";
