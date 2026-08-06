@@ -2,7 +2,6 @@
 {
   wayland.windowManager.sway = {
     enable = true;
-    systemd.enable = true;
     checkConfig = false;
 
     config = {
@@ -23,12 +22,4 @@
       };
     };
   };
-
-  home.packages = with pkgs; [
-    impala
-    grim
-    slurp
-    wlsunset
-    wlogout
-  ];
 }

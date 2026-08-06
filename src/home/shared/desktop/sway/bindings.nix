@@ -1,4 +1,4 @@
-{ lib, ... }:
+{ ... }:
 let
   mod = "Mod4";
   left = "h";
@@ -13,7 +13,7 @@ in
 {
   wayland.windowManager.sway.config = {
     modifier = mod;
-    keybindings = lib.mkOptionDefault {
+    keybindings = {
       # Basics
       "${mod}+Return" = "exec ${term}";
       "${mod}+c" = "kill";
