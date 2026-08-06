@@ -388,6 +388,22 @@
         "type": "github"
       }
     },
+    "nox-config": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1785834512,
+        "narHash": "sha256-pSihqPRJkkigwBwjfhXKWR0ZwNEAiJwOpvVV95q5db8=",
+        "owner": "kiramidru",
+        "repo": "nox-config",
+        "rev": "3214e474334de82ad1d4d553789f18ac7a2f6f0b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "kiramidru",
+        "repo": "nox-config",
+        "type": "github"
+      }
+    },
     "nur": {
       "inputs": {
         "flake-parts": [
@@ -445,6 +461,7 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "nox-config": "nox-config",
         "pre-commit-hooks": "pre-commit-hooks",
         "secrets-nix": "secrets-nix",
         "spicetify-nix": "spicetify-nix",

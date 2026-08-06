@@ -12,7 +12,6 @@
             gap = 1;
             padding = 1;
           }
-          { section = "startup"; }
         ];
       };
       bigfile = {

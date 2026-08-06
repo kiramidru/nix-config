@@ -1,4 +1,4 @@
-{ services, config, ... }:
+{ config, ... }:
 {
   services.restic.backups.remote-backup = {
     initialize = true;

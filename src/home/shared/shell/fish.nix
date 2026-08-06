@@ -1,7 +1,14 @@
-{ ... }:
+{ pkgs, ... }:
 {
   programs.fish = {
     enable = true;
+
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide.src;
+      }
+    ];
 
     shellAliases = {
       ls = "eza --color=auto --icons";
@@ -20,7 +27,6 @@
 
     interactiveShellInit = ''
       set -g fish_greeting ""
-      direnv hook fish | source
     '';
   };
 }

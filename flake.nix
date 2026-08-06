@@ -80,6 +80,11 @@
       url = "git+ssh://git@github.com/kiramidru/secrets-nix.git";
       flake = false;
     };
+
+    nox-config = {
+      url = "github:kiramidru/nox-config";
+      flake = false;
+    };
   };
 
   outputs =
@@ -93,6 +98,7 @@
       impermanence,
       secrets-nix,
       wallpapers,
+      nox-config,
       ...
     }@inputs:
     let
