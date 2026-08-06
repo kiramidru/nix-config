@@ -25,6 +25,7 @@
       ".config/net.imput.helium"
       ".config/spotify"
       ".config/opencode"
+      ".config/emacs"
 
       ".cache/spotify"
 

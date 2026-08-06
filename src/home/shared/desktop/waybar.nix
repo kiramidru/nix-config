@@ -1,4 +1,8 @@
-{ ... }:
+{ config, ... }:
+
+let
+  color = config.lib.stylix.colors.withHashtag;
+in
 {
   programs.waybar = {
     enable = true;
@@ -93,32 +97,71 @@
       * {
         border: none;
         border-radius: 0;
-        font-family: "JetBrainsMono Nerd Font", Roboto, Helvetica, Arial, sans-serif;
+        font-family: "${config.stylix.fonts.monospace.name}", "JetBrainsMono Nerd Font", sans-serif;
         font-size: 13px;
         min-height: 0;
       }
 
       window#waybar {
-        background: rgba(15, 23, 42, 1);
-        color: #f1f5f9;
+        background-color: ${color.base00};
+        color: ${color.base05};
+        border-bottom: 1px solid ${color.base01};
       }
 
       #workspaces button {
-        padding: 0 5px;
+        padding: 0 8px;
         background: transparent;
-        color: #94a3b8;
+        color: ${color.base04};
         border-bottom: 2px solid transparent;
       }
 
-      #workspaces button.focused {
-        color: #22d3ee;
-        border-bottom: 2px solid #22d3ee;
+      #workspaces button.focused,
+      #workspaces button.active {
+        color: ${color.base0E};
+        border-bottom: 2px solid ${color.base0E};
+        background-color: ${color.base01};
+      }
+
+      #workspaces button:hover {
+        background: ${color.base02};
+        color: ${color.base05};
+      }
+
+      #window {
+        color: ${color.base04};
+        font-style: italic;
+      }
+
+      #clock {
+        color: ${color.base0F};
+        font-weight: bold;
+      }
+
+      #pulseaudio {
+        color: ${color.base0D};
+        font-weight: bold;
+      }
+
+      #network {
+        color: ${color.base0C};
+        font-weight: bold;
+      }
+
+      #battery {
+        color: ${color.base0B};
+        font-weight: bold;
+      }
+
+      #battery.warning {
+        color: ${color.base0A};
+      }
+
+      #battery.critical {
+        color: ${color.base08};
       }
 
       #clock, #pulseaudio, #network, #battery, #window {
         padding: 0 8px;
-        color: #f1f5f9;
-        font-weight: bold;
       }
     '';
   };

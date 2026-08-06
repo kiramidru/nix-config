@@ -1,5 +1,4 @@
 {
-  inputs,
   pkgs,
   config,
   ...
@@ -7,7 +6,7 @@
 {
   stylix = {
     enable = true;
-    image = "${inputs.wallpapers}/witch.jpg";
+    base16Scheme = "${pkgs.base16-schemes}/share/themes/catppuccin-mocha.yaml";
     polarity = "dark";
     overlays.enable = false;
 
