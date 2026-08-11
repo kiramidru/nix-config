@@ -1,13 +1,7 @@
 { pkgs, ... }:
 
 {
-  programs.emacs = {
-    enable = true;
-    package = pkgs.emacs-pgtk;
-    extraPackages =
-      epkgs: with epkgs; [
-        vertico
-        magit
-      ];
-  };
+  home.packages = [
+    pkgs.emacs-gtk
+  ];
 }

@@ -4,6 +4,6 @@
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-generations +3";
+    options = "--delete-older-than 7d";
   };
 }

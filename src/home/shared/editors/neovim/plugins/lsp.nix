@@ -33,9 +33,6 @@
               };
             };
             formatting.command = [ "nixpkgs-fmt" ];
-            options = {
-              nixos.expr = ''(builtins.getFlake "/etc/nixos").nixosConfigurations.Kira.options'';
-            };
           };
         };
 
