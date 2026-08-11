@@ -59,6 +59,11 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
+    noctalia = {
+      url = "github:noctalia-dev/noctalia-shell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     warehouse-nix = {
       url = "github:kiramidru/warehouse-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -96,6 +101,7 @@
       agenix,
       disko,
       impermanence,
+      noctalia,
       secrets-nix,
       wallpapers,
       nox-config,

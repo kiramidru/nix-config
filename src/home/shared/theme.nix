@@ -41,6 +41,8 @@
         popups = 10;
       };
     };
+
+    targets.nixvim.enable = false;
   };
   home.pointerCursor.enable = true;
 

@@ -22,6 +22,7 @@
         inputs.spicetify-nix.homeManagerModules.default
         inputs.nixvim.homeModules.nixvim
         inputs.stylix.homeModules.stylix
+        inputs.noctalia.homeModules.default
 
         src.home.users.${config.hostSpec.username}
       ];

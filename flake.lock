@@ -388,6 +388,26 @@
         "type": "github"
       }
     },
+    "noctalia": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1786228065,
+        "narHash": "sha256-PWuq5v4RtCWgSWKi5bTDnnh3fUTsc5h/7iXhzsAEc2Q=",
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "rev": "0f672dbb0597c539019cac718685961f1a23037a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "noctalia-dev",
+        "repo": "noctalia-shell",
+        "type": "github"
+      }
+    },
     "nox-config": {
       "flake": false,
       "locked": {
@@ -461,6 +481,7 @@
         "impermanence": "impermanence",
         "nixpkgs": "nixpkgs",
         "nixvim": "nixvim",
+        "noctalia": "noctalia",
         "nox-config": "nox-config",
         "pre-commit-hooks": "pre-commit-hooks",
         "secrets-nix": "secrets-nix",

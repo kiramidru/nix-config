@@ -1,0 +1,163 @@
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    pavucontrol
+    pulsemixer
+  ];
+
+  programs.waybar = {
+    enable = true;
+    systemd.enable = true;
+
+    settings.mainBar = {
+      position = "top";
+      layer = "top";
+      fixed-center = true;
+      margin-top = 6;
+      margin-left = 16;
+      margin-right = 16;
+      spacing = 8;
+
+      modules-left = [
+        "clock"
+        "sway/workspaces"
+      ];
+
+      modules-center = [ "sway/window" ];
+
+      modules-right = [
+        "custom/swaync"
+        "group/controls"
+        "battery"
+        "custom/power"
+      ];
+
+      "clock" = {
+        interval = 1;
+        format = " {:%I:%M %p}";
+        format-alt = " {%Y, %d %B, %A}";
+      };
+
+      "sway/workspaces" = {
+        disable-scroll = true;
+        all-outputs = true;
+        format = "{icon}";
+        format-icons = {
+          "1" = "一";
+          "2" = "二";
+          "3" = "三";
+          "4" = "四";
+          "5" = "五";
+          "6" = "六";
+          "7" = "七";
+          "8" = "八";
+          "9" = "九";
+          "10" = "十";
+        };
+      };
+
+      "sway/window" = {
+        format = "{title}";
+        max-length = 30;
+        separate-outputs = true;
+        all-outputs = false;
+        offscreen-css = true;
+        offscreen-css-text = "bold";
+      };
+
+      "custom/swaync" = {
+        exec = "swaync-client -swb";
+        return-type = "json";
+        format = "{text} {icon}";
+        format-icons = {
+          notification = "";
+          none = "";
+          dnd-notification = "";
+          dnd-none = "";
+          inhibited-notification = "";
+          inhibited-none = "";
+          dnd-inhibited-notification = "";
+          dnd-inhibited-none = "";
+        };
+        on-click = "swaync-client -t";
+        on-click-right = "swaync-client -d";
+      };
+
+      "group/controls" = {
+        orientation = "horizontal";
+        modules = [
+          "pulseaudio"
+          "network"
+        ];
+      };
+
+      "pulseaudio" = {
+        format = "{icon} {volume}%";
+        format-icons = {
+          muted = "󰖁";
+          bluetooth = "󰂰";
+          default = [
+            ""
+            ""
+            "󰕾"
+            ""
+          ];
+        };
+        scroll-step = 5;
+        tooltip-format = "{icon} {desc}";
+        on-click = "setsid foot -t 'Volume Mixer' -e pulsemixer";
+        on-click-right = "pavucontrol -t 3";
+      };
+
+      "network" = {
+        format = "{icon} {essid}";
+        format-ethernet = "󰈀  {ifname}";
+        format-disconnected = "󰤮";
+        format-icons = {
+          default = [
+            "󰤟"
+            "󰤢"
+            "󰤥"
+            "󰤨"
+          ];
+        };
+        tooltip-format = "{ifname} via {gwaddr}";
+        on-click = "setsid foot -t 'Impala' -e impala";
+      };
+
+      "battery" = {
+        states = {
+          warning = 30;
+          critical = 15;
+        };
+        format = "{icon} {capacity}%";
+        format-charging = " {capacity}%";
+        format-plugged = "󱘖 {capacity}%";
+        format-full = "{icon} Full";
+        format-icons = [
+          "󰂎"
+          "󰁺"
+          "󰁻"
+          "󰁼"
+          "󰁽"
+          "󰁾"
+          "󰁿"
+          "󰂀"
+          "󰂁"
+          "󰂂"
+          "󰁹"
+        ];
+        tooltip-format = "{timeTo} {power}W";
+        on-click-right = "wlogout";
+      };
+
+      "custom/power" = {
+        format = "⏻";
+        on-click = "wlogout";
+        tooltip = true;
+        tooltip-format = "Logout Menu";
+      };
+    };
+  };
+}
