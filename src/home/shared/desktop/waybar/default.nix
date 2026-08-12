@@ -1,11 +1,5 @@
-{ pkgs, ... }:
+{ ... }:
 {
-  home.packages = with pkgs; [
-    nerd-fonts.jetbrains-mono
-    pavucontrol
-    pulsemixer
-  ];
-
   programs.waybar = {
     enable = true;
     systemd.enable = true;
@@ -14,9 +8,9 @@
       position = "top";
       layer = "top";
       fixed-center = true;
-      margin-top = 6;
-      margin-left = 16;
-      margin-right = 16;
+      margin-top = 8;
+      margin-left = 8;
+      margin-right = 8;
       spacing = 8;
 
       modules-left = [
@@ -37,6 +31,7 @@
         interval = 1;
         format = " {:%I:%M %p}";
         format-alt = " {%Y, %d %B, %A}";
+        tooltip = false;
       };
 
       "sway/workspaces" = {
@@ -55,15 +50,24 @@
           "9" = "九";
           "10" = "十";
         };
+
+        persistent-workspaces = {
+          "1" = [ ];
+          "2" = [ ];
+          "3" = [ ];
+          "4" = [ ];
+          "5" = [ ];
+        };
       };
 
       "sway/window" = {
         format = "{title}";
-        max-length = 30;
+        max-length = 60;
         separate-outputs = true;
         all-outputs = false;
         offscreen-css = true;
         offscreen-css-text = "bold";
+        tooltip = false;
       };
 
       "custom/swaync" = {
@@ -155,8 +159,7 @@
       "custom/power" = {
         format = "⏻";
         on-click = "wlogout";
-        tooltip = true;
-        tooltip-format = "Logout Menu";
+        tooltip = false;
       };
     };
   };

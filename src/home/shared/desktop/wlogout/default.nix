@@ -38,7 +38,6 @@ in
       }
     ];
 
-    # Apply your Stylix colors directly to the GTK interface
     style = ''
       * {
         background-image: none;

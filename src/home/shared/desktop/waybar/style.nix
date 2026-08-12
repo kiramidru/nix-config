@@ -6,7 +6,7 @@ in
   programs.waybar.style = ''
     * {
       all: unset;
-      font-family: "JetBrainsMono Nerd Font Propo";
+      font-family: "${config.stylix.fonts.monospace.name}", "JetBrainsMono Nerd Font Propo";
       font-size: 98%;
       font-weight: bold;
       font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
@@ -40,7 +40,7 @@ in
     #workspaces button.focused {
       background-color: ${color.base05};
       color: ${color.base00};
-      min-width: 64px;
+      min-width: 56px;
     }
 
     #window {

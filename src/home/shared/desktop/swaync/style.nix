@@ -20,6 +20,10 @@ in
       padding: 12px;
     }
 
+    .control-center-list {
+
+    }
+
     .notification-row .notification-background .notification {
       margin: 6px;
       padding: 8px 6px 2px 2px;
