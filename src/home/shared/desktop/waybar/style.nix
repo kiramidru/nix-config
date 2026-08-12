@@ -60,8 +60,7 @@ in
 
     #custom-swaync,
     #custom-power {
-      padding: 6px 14px;
-      padding-bottom: 8px;
+      padding: 6px 16px 8px 14px;
     }
 
     tooltip {

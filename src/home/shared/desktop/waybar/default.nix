@@ -30,7 +30,7 @@
       "clock" = {
         interval = 1;
         format = " {:%I:%M %p}";
-        format-alt = " {%Y, %d %B, %A}";
+        format-alt = " {:%Y, %d %B, %A}";
         tooltip = false;
       };
 
@@ -98,8 +98,8 @@
 
       "pulseaudio" = {
         format = "{icon} {volume}%";
+        format-muted = "󰖁 Muted";
         format-icons = {
-          muted = "󰖁";
           bluetooth = "󰂰";
           default = [
             ""
@@ -126,7 +126,7 @@
             "󰤨"
           ];
         };
-        tooltip-format = "{ifname} via {gwaddr}";
+        tooltip-format = "↓ {bandwidthDownBytesCompact}/s\n↑ {bandwidthUpBytesCompact}/s";
         on-click = "setsid foot -t 'Impala' -e impala";
       };
 
