@@ -20,29 +20,19 @@ in
       padding: 12px;
     }
 
-    .control-center-list {
-
-    }
-
-    .notification-row .notification-background .notification {
-      margin: 6px;
-      padding: 8px 6px 2px 2px;
-    }
-
-    .notification-row .notification-background .close-button {
-      background-color: ${color.base00};
-      border-radius: 16px;
-      margin: 0px;
-      padding: 4px;
-    }
-
     .floating-notifications.background .notification-row .notification-background .notification {
       background-color: transparent;
       border: 1px solid transparent;
     }
 
     .notification-content {
-       padding: 16px 24px; 
+      border-radius: 24px;
+      padding: 16px 24px; 
+    }
+
+    .close-button {
+      border-radius: 24px;
+      background-color: ${color.base02}
     }
 
     .widget-title {

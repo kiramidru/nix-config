@@ -7,7 +7,6 @@
     grim
     slurp
     wlsunset
-    wlogout
 
     fastfetch
     ripgrep
