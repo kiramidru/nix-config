@@ -126,7 +126,8 @@
             "󰤨"
           ];
         };
-        tooltip-format = "↓ {bandwidthDownBytesCompact}/s\n↑ {bandwidthUpBytesCompact}/s";
+        interval = 1;
+        tooltip-format = "↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}";
         on-click = "setsid foot -t 'Impala' -e impala";
       };
 
