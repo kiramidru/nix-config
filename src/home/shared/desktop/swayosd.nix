@@ -5,7 +5,7 @@
     topMargin = 0.95;
     stylePath = builtins.toFile "swayosd-style.css" ''
       window#osd {
-        border-radius: 0px;
+        border-radius: 32px;
         background: rgba(30, 30, 46, 0.9);
         border: 1px solid rgba(255, 255, 255, 0.1);
       }

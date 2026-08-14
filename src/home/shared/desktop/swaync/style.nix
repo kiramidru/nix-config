@@ -16,8 +16,17 @@ in
       background-color: ${color.base00};
       border: 1px solid transparent;
       border-radius: 24px;
-      margin: 18px;
-      padding: 12px;
+      margin: 10px;
+      padding: 12px 16px;
+    }
+
+    .control-center-list-placeholder image {
+      opacity: 0;
+    }
+
+    .control-center-list-placeholder label {
+      font-size: 16px;
+      margin-top: -96px;
     }
 
     .floating-notifications.background .notification-row .notification-background .notification {

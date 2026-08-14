@@ -4,7 +4,7 @@
     package = pkgs.swayfx;
 
     extraConfig = ''
-      corner_radius 10
+      corner_radius 24
 
       blur enable
       blur_xray disable
