@@ -5,7 +5,7 @@
       "eDP-1" = {
         res = "1920x1080@120Hz";
         pos = "1920 0";
-        bg = "${inputs.wallpapers}/strings.webp fill";
+        bg = "${inputs.wallpapers}/view.jpeg fill";
       };
     };
   };
