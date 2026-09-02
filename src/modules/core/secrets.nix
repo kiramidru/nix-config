@@ -23,8 +23,18 @@
       owner = "kira";
       mode = "0400";
     };
+    github-token = {
+      file = "${inputs.secrets-nix}/github-token.age";
+      owner = "kira";
+      mode = "0400";
+    };
     vpn-credential = {
       file = "${inputs.secrets-nix}/vpn-credential.age";
+      owner = "kira";
+      mode = "0400";
+    };
+    deepseek-key = {
+      file = "${inputs.secrets-nix}/deepseek-key.age";
       owner = "kira";
       mode = "0400";
     };
