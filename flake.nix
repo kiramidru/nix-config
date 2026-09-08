@@ -35,12 +35,6 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    impermanence = {
-      url = "github:nix-community/impermanence";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -49,19 +43,19 @@
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.agenix.inputs.nixpkgs.follows = "nixpkgs";
-      inputs.agenix.inputs.home-manager.follows = "home-manager";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
     };
 
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
-    };
-
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     warehouse-nix = {
@@ -85,11 +79,6 @@
       url = "git+ssh://git@github.com/kiramidru/secrets-nix.git";
       flake = false;
     };
-
-    nox-config = {
-      url = "github:kiramidru/nox-config";
-      flake = false;
-    };
   };
 
   outputs =
@@ -101,10 +90,8 @@
       agenix,
       disko,
       impermanence,
-      noctalia,
       secrets-nix,
       wallpapers,
-      nox-config,
       ...
     }@inputs:
     let

@@ -4,20 +4,22 @@
   ...
 }:
 {
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-40.10.5"
-  ];
+  nix = {
+    extraOptions = ''
+      !include ${config.age.secrets.github-token.path}
+    '';
 
-  nix.settings = {
-    experimental-features = [
-      "nix-command"
-      "flakes"
-    ];
-    warn-dirty = false;
-    trusted-users = [
-      "root"
-      "@wheel"
-    ];
+    settings = {
+      experimental-features = [
+        "nix-command"
+        "flakes"
+      ];
+      warn-dirty = false;
+      trusted-users = [
+        "root"
+        "@wheel"
+      ];
+    };
   };
 
   security.sudo.extraConfig = ''

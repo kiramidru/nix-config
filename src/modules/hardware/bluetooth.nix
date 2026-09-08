@@ -1,7 +1,7 @@
 { lib, config, ... }:
 lib.mkIf (config.hostSpec.role != "server") {
   hardware.bluetooth = {
-    enable = false;
+    enable = true;
     settings = {
       General = {
         Experimental = true;

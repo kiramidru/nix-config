@@ -4,6 +4,7 @@
     brightnessctl
     playerctl
     impala
+    bluetui
     grim
     slurp
     wlsunset
@@ -11,5 +12,6 @@
     fastfetch
     ripgrep
     gh
+    awscli
   ];
 }
