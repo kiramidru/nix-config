@@ -16,7 +16,7 @@
 
       if [ -e /mnt/@ ]; then
           echo "Scanning for nested subvolumes..."
-          # Find any nested subvolumes (like /var/lib/machines) and delete them
+
           btrfs subvolume list -o /mnt/@ | cut -f9 -d' ' | while read -r subvolume; do
               echo "Deleting nested subvolume: /$subvolume"
               btrfs subvolume delete "/mnt/$subvolume"
