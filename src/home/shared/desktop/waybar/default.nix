@@ -30,7 +30,7 @@
       "clock" = {
         interval = 1;
         format = " {:%I:%M %p}";
-        format-alt = " {:%Y, %d %B, %A}";
+        format-alt = " {:%A, %d %B, %Y}";
         tooltip = false;
       };
 

@@ -4,14 +4,14 @@
     enable = true;
     settings = {
       main = {
-        font = lib.mkForce "Iosevka:size=7";
+        font = lib.mkForce "JetBrainsMono Nerd Font:size=7";
         icons-enabled = false;
 
         terminal = "foot";
         prompt = "'󱓞  Apps ❯ '";
 
         anchor = "center";
-        width = 120;
+        width = 110;
         horizontal-pad = 20;
         vertical-pad = 10;
         inner-pad = 10;

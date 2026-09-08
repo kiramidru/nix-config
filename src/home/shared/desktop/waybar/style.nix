@@ -6,10 +6,9 @@ in
   programs.waybar.style = ''
     * {
       all: unset;
-      font-family: "${config.stylix.fonts.monospace.name}", "JetBrainsMono Nerd Font Propo";
+      font-family: ${config.stylix.fonts.monospace.name}, "JetBrainsMono Nerd Font Propo";
       font-size: 98%;
       font-weight: bold;
-      font-feature-settings: '"zero", "ss01", "ss02", "ss03", "ss04", "ss05", "cv31"';
       transition: min-width 0.3s cubic-bezier(.55,-0.68,.48,1.682);
     }
 
@@ -25,6 +24,7 @@ in
     #custom-power {
       border-radius: 9999px;
       background-color: ${color.base00};
+      color: ${color.base05};
       padding: 10px 16px;
     }
 
@@ -34,6 +34,7 @@ in
 
     #workspaces button {
       border-radius: 999px;
+      color: ${color.base05};
       min-width: 32px;
     }
 
@@ -65,7 +66,7 @@ in
 
     tooltip {
       background: ${color.base00};
-      border: 1px solid ${color.base02};
+      border: 1px solid ${color.base0E};
     }
 
     tooltip label {

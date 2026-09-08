@@ -6,6 +6,7 @@
       "/var/lib/systemd/coredump"
       "/var/lib/iwd"
       "/var/lib/tailscale"
+      "/var/lib/bluetooth"
       "/etc/ssh"
     ];
     files = [
