@@ -23,15 +23,6 @@
           desc = "Toggle Neo-tree";
         };
       }
-      {
-        mode = "n";
-        key = "<leader>e";
-        action = "<cmd>Neotree focus<cr>";
-        options = {
-          silent = true;
-          desc = "Focus Neo-tree";
-        };
-      }
     ];
   };
 }

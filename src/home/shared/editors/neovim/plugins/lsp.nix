@@ -13,6 +13,7 @@
       };
     };
 
+    dependencies.go.packageFallback = true;
     plugins.lsp = {
       enable = true;
 
@@ -54,15 +55,7 @@
           enable = true;
           package = null;
         };
-        tailwindcss = {
-          enable = true;
-          package = null;
-        };
         vtsls = {
-          enable = true;
-          package = null;
-        };
-        jsonls = {
           enable = true;
           package = null;
         };
@@ -72,6 +65,7 @@
           package = null;
           settings = {
             gofumpt = true;
+            staticcheck = true;
             usePlaceholders = true;
             analyses = {
               unusedparams = true;

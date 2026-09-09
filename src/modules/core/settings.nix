@@ -1,7 +1,6 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }:
 {
   nix = {
@@ -17,7 +16,7 @@
       warn-dirty = false;
       trusted-users = [
         "root"
-        "@wheel"
+        "kira"
       ];
     };
   };
