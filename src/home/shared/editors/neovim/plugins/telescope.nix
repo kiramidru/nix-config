@@ -4,14 +4,16 @@
     plugins.telescope = {
       enable = true;
 
-      extensions.ui-select = {
-        enable = true;
-        settings = {
-          theme = "dropdown";
+      extensions = {
+        ui-select = {
+          enable = true;
+          settings = {
+            theme = "dropdown";
+          };
         };
-      };
 
-      extensions.fzf-native.enable = true;
+        fzf-native.enable = true;
+      };
 
       keymaps = {
         "<leader>ff" = {
@@ -21,6 +23,14 @@
         "<leader>fg" = {
           action = "live_grep";
           options.desc = "Telescope Live Grep";
+        };
+        "<leader>fb" = {
+          action = "buffers";
+          options.desc = "Telescope Buffers";
+        };
+        "<leader>git" = {
+          action = "git_files";
+          options.desc = "Telescope Git Files";
         };
       };
     };

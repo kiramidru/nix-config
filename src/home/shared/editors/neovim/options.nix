@@ -12,6 +12,9 @@
       shiftwidth = 4;
       number = true;
       relativenumber = true;
+
+      undofile = true;
+      signcolumn = "yes";
     };
 
     plugins.web-devicons.enable = true;
