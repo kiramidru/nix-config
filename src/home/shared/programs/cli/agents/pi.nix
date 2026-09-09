@@ -44,6 +44,6 @@
   };
 
   programs.fish.interactiveShellInit = ''
-    set -gx DEEPSEEK_KEY (cat ${osConfig.age.secrets."deepseek-key".path})
+    set -gx DEEPSEEK_KEY (cat ${osConfig.age.secrets.deepseek-key.path})
   '';
 }

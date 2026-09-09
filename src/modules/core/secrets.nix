@@ -38,5 +38,10 @@
       owner = "kira";
       mode = "0400";
     };
+    azure-monolith-key = {
+      file = "${inputs.secrets-nix}/azure-monolith-key.age";
+      owner = "kira";
+      mode = "0400";
+    };
   };
 }

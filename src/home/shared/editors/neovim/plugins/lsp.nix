@@ -55,6 +55,10 @@
           enable = true;
           package = null;
         };
+        gleam = {
+          enable = true;
+          package = null;
+        };
         vtsls = {
           enable = true;
           package = null;
