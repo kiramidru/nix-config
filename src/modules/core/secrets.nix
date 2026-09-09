@@ -38,8 +38,13 @@
       owner = "kira";
       mode = "0400";
     };
-    azure-monolith-key = {
-      file = "${inputs.secrets-nix}/azure-monolith-key.age";
+    openrouter-key = {
+      file = "${inputs.secrets-nix}/openrouter-key.age";
+      owner = "kira";
+      mode = "0400";
+    };
+    azure-monolith-vm-key = {
+      file = "${inputs.secrets-nix}/azure-monolith-vm-key.age";
       owner = "kira";
       mode = "0400";
     };

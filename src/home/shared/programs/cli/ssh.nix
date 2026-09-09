@@ -1,5 +1,6 @@
-{ osConfig, ... }:
+{ osConfig, pkgs, ... }:
 {
+  home.packages = [ pkgs.mosh ];
   programs.ssh = {
     enable = true;
     enableDefaultConfig = false;
@@ -10,10 +11,10 @@
         IdentityFile = "~/.ssh/id_ed25519";
       };
 
-      "azure-monolith" = {
-        hostname = "102.133.226.246";
+      "azure-monolith-vm" = {
+        hostname = "158.158.73.144";
         user = "kira";
-        identityFile = osConfig.age.secrets.azure-monolith-key.path;
+        identityFile = osConfig.age.secrets.azure-monolith-vm-key.path;
       };
     };
   };
