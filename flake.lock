@@ -437,11 +437,11 @@
     "secrets-nix": {
       "flake": false,
       "locked": {
-        "lastModified": 1788811195,
-        "narHash": "sha256-f9BIJX3D7qkzJzPLkBXasuW8FHDojx+EJwWaoFfSz08=",
+        "lastModified": 1788990992,
+        "narHash": "sha256-JSx+/KermO1i1/n7MhmpT65Yf9F8m2Oob31aJFl3NrY=",
         "ref": "refs/heads/main",
-        "rev": "5d86cba720b36dd37f4241c4a1bb9a7745ac911b",
-        "revCount": 27,
+        "rev": "f792fc904105e9f65bc50202f0e53aa15319ebff",
+        "revCount": 29,
         "type": "git",
         "url": "ssh://git@github.com/kiramidru/secrets-nix.git"
       },
