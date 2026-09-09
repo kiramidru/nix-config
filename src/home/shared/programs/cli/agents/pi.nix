@@ -21,6 +21,18 @@
             }
           ];
         };
+        openrouter = {
+          api = "openai-completions";
+          apiKey = "$OPENROUTER_API_KEY";
+          baseUrl = "https://openrouter.ai/api/v1";
+          models = [
+            {
+              id = "nvidia/nemotron-3-ultra-550b-a55b:free";
+              name = "Nvidia Nemotron 3 Ultra (Free)";
+              reasoning = true;
+            }
+          ];
+        };
       };
     };
 
@@ -45,5 +57,6 @@
 
   programs.fish.interactiveShellInit = ''
     set -gx DEEPSEEK_KEY (cat ${osConfig.age.secrets.deepseek-key.path})
+    set -gx OPENROUTER_API_KEY (cat ${osConfig.age.secrets.openrouter-key.path})
   '';
 }
