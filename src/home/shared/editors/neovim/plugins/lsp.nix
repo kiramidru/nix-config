@@ -16,11 +16,21 @@
     plugins.lsp = {
       enable = true;
 
-      keymaps.lspBuf = {
-        "K" = "hover";
-        "gd" = "definition";
-        "gr" = "implementation";
-        "<leader>ca" = "code_action";
+      keymaps = {
+        diagnostic = {
+          "[d" = "goto_prev";
+          "]d" = "goto_next";
+          "<leader>e" = "open_float";
+        };
+        lspBuf = {
+          "K" = "hover";
+          "gd" = "definition";
+          "gD" = "declaration";
+          "gr" = "references";
+          "gI" = "implementation";
+          "<leader>ca" = "code_action";
+          "<leader>rn" = "rename";
+        };
       };
 
       servers = {
@@ -36,14 +46,44 @@
           };
         };
 
-        gopls.enable = true;
-        pyright.enable = true;
-        tailwindcss.enable = true;
-        ts_ls.enable = true;
-        jsonls.enable = true;
+        basedpyright = {
+          enable = true;
+          package = null;
+        };
+        ruff = {
+          enable = true;
+          package = null;
+        };
+        tailwindcss = {
+          enable = true;
+          package = null;
+        };
+        vtsls = {
+          enable = true;
+          package = null;
+        };
+        jsonls = {
+          enable = true;
+          package = null;
+        };
+
+        gopls = {
+          enable = true;
+          package = null;
+          settings = {
+            gofumpt = true;
+            usePlaceholders = true;
+            analyses = {
+              unusedparams = true;
+              nilness = true;
+              shadow = true;
+            };
+          };
+        };
 
         rust_analyzer = {
           enable = true;
+          package = null;
           installCargo = false;
           installRustc = false;
           settings = {
@@ -53,6 +93,17 @@
               command = "clippy";
             };
             procMacro.enable = true;
+          };
+        };
+      };
+    };
+
+    plugins.fidget = {
+      enable = true;
+      settings = {
+        progress = {
+          display = {
+            done_icon = "✓";
           };
         };
       };

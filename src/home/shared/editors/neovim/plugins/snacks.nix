@@ -12,6 +12,7 @@
             gap = 1;
             padding = 1;
           }
+          { section = "recent_files"; }
         ];
       };
       bigfile = {
@@ -26,6 +27,21 @@
       words = {
         enabled = true;
       };
+
+      keymaps = [
+        {
+          mode = "n";
+          key = "<leader>un";
+          action = "<cmd>lua Snacks.notifier.hide()<CR>";
+          options.desc = "Dismiss notifications";
+        }
+        {
+          mode = "n";
+          key = "<leader>nh";
+          action = "<cmd>lua Snacks.notifier.show_history()<CR>";
+          options.desc = "Notification history";
+        }
+      ];
     };
   };
 }

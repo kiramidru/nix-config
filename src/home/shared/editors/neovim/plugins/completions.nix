@@ -21,8 +21,10 @@
           ];
         };
 
-        completion.documentation.auto_show = true;
-        completion.ghost_text.enabled = true;
+        completion = {
+          documentation.auto_show = true;
+          ghost_text.enabled = true;
+        };
       };
     };
   };

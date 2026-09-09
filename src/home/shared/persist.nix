@@ -27,6 +27,7 @@
       ".config/steam"
       ".config/godot"
 
+      ".cache/nix"
       ".cache/spotify"
 
       ".cargo"
