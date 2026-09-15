@@ -82,17 +82,16 @@
   };
 
   outputs =
-    {
-      self,
-      nixpkgs,
-      home-manager,
-      haumea,
-      agenix,
-      disko,
-      impermanence,
-      secrets-nix,
-      wallpapers,
-      ...
+    { self
+    , nixpkgs
+    , home-manager
+    , haumea
+    , agenix
+    , disko
+    , impermanence
+    , secrets-nix
+    , wallpapers
+    , ...
     }@inputs:
     let
       lib = nixpkgs.lib;
