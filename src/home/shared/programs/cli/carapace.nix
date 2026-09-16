@@ -1,9 +1,8 @@
 { ... }:
 {
-  programs.eza = {
+  programs.carapace = {
     enable = true;
     enableFishIntegration = true;
-    icons = "auto";
-    git = true;
+    ignoreCase = true;
   };
 }

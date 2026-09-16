@@ -11,7 +11,5 @@
 
     fastfetch
     ripgrep
-    gh
-    awscli
   ];
 }

@@ -17,7 +17,7 @@
       if [ -e /mnt/@ ]; then
           echo "Scanning for nested subvolumes..."
 
-          btrfs subvolume list -o /mnt/@ | cut -f9 -d' ' | while read -r subvolume; do
+          btrfs subvolume list -o /mnt/@ | cut -f9 -d' ' | sort -r | while read -r subvolume; do
               echo "Deleting nested subvolume: /$subvolume"
               btrfs subvolume delete "/mnt/$subvolume"
           done

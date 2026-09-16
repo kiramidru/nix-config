@@ -18,7 +18,7 @@ in
       "${mod}+Return" = "exec ${term}";
       "${mod}+c" = "kill";
       "${mod}+space" = "exec ${menu}";
-      "${mod}+e" = "exec ${term} -e ${file}";
+      "${mod}+e" = "exec ${term} ${file}";
       "${mod}+Shift+c" = "reload";
 
       #TODO: FIX THIS

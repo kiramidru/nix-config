@@ -38,8 +38,8 @@
       owner = "kira";
       mode = "0400";
     };
-    openrouter-key = {
-      file = "${inputs.secrets-nix}/openrouter-key.age";
+    hcnsec-key = {
+      file = "${inputs.secrets-nix}/hcnsec-key.age";
       owner = "kira";
       mode = "0400";
     };

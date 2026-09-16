@@ -19,6 +19,7 @@
       ".local/share/bruno"
       ".local/share/Steam"
       ".local/share/godot"
+      ".local/share/trilium-data"
 
       ".config/net.imput.helium"
       ".config/spotify"
