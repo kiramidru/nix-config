@@ -3,6 +3,10 @@
 , ...
 }:
 {
+  nixpkgs.config.permittedInsecurePackages = [
+    "electron-39.8.10"
+  ];
+
   nix = {
     extraOptions = ''
       !include ${config.age.secrets.github-token.path}

@@ -110,7 +110,7 @@
         };
         scroll-step = 5;
         tooltip-format = "{icon} {desc}";
-        on-click = "setsid foot -t 'Volume Mixer' -e pulsemixer";
+        on-click = "setsid foot --title 'Volume Mixer' pulsemixer";
         on-click-right = "pavucontrol -t 3";
       };
 
@@ -128,7 +128,7 @@
         };
         interval = 1;
         tooltip-format = "↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}";
-        on-click = "setsid foot -t 'Impala' -e impala";
+        on-click = "setsid foot --title 'Impala' impala";
       };
 
       "battery" = {
