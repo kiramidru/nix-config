@@ -18,6 +18,7 @@
     enable = true;
     allowedTCPPorts = [
       22 # SSH
+      8081 # Expo
     ];
     allowedUDPPorts = [
     ];

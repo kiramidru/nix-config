@@ -8,5 +8,7 @@
     telegram-desktop
     qbittorrent
     discord
+    slack
+    zoom-us
   ];
 }
