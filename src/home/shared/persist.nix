@@ -15,6 +15,7 @@
       ".local/share/fish"
       ".local/share/keyrings"
       ".local/share/nvim"
+      ".local/share/opencode"
       ".local/share/TelegramDesktop"
       ".local/share/bruno"
       ".local/share/Steam"
@@ -37,7 +38,6 @@
       ".minecraft"
       ".tlauncher"
       ".steam"
-      ".pi"
       "go"
     ];
   };
