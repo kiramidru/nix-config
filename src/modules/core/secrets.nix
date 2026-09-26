@@ -48,5 +48,10 @@
       owner = "kira";
       mode = "0400";
     };
+    minecraft-vm-key = {
+      file = "${inputs.secrets-nix}/minecraft-vm-key.age";
+      owner = "kira";
+      mode = "0400";
+    };
   };
 }
