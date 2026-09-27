@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.nixvim = {
     plugins.conform-nvim = {
       enable = true;
@@ -9,7 +8,10 @@
           timeout_ms = 500;
         };
         formatters_by_ft = {
-          go = [ "goimports" "gofumpt" ];
+          go = [
+            "goimports"
+            "gofumpt"
+          ];
           javascript = [ "prettier" ];
           nix = [ "nixpkgs_fmt" ];
           python = [ "ruff_format" ];

@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   boot.initrd.systemd.services.restore-root = {
     description = "Wipe and Recreate Btrfs Root";
     wantedBy = [ "initrd.target" ];
@@ -21,7 +20,7 @@
               echo "Deleting nested subvolume: /$subvolume"
               btrfs subvolume delete "/mnt/$subvolume"
           done
-          
+
           echo "Deleting main root subvolume (@)..."
           btrfs subvolume delete /mnt/@
       fi

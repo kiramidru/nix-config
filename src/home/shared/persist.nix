@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   home.persistence."/persist" = {
     directories = [
       "nix-config"

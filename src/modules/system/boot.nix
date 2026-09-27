@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   boot = {
     initrd = {
       verbose = false;

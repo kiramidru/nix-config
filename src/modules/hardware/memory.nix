@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   boot.kernel.sysctl = {
     "vm.swappiness" = 60;
     "vm.vfs_cache_pressure" = 50;

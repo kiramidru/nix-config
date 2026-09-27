@@ -5,7 +5,10 @@
     servers = {
       github = {
         command = "${pkgs.nodejs}/bin/npx";
-        args = [ "-y" "@modelcontextprotocol/server-github" ];
+        args = [
+          "-y"
+          "@modelcontextprotocol/server-github"
+        ];
         env.GITHUB_PERSONAL_ACCESS_TOKEN.file = osConfig.age.secrets.github-token.path;
       };
 
@@ -20,7 +23,10 @@
 
       playwright = {
         command = "${pkgs.nodejs}/bin/npx";
-        args = [ "-y" "@playwright/mcp" ];
+        args = [
+          "-y"
+          "@playwright/mcp"
+        ];
       };
     };
   };

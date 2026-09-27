@@ -11,7 +11,9 @@
     src.home.shared.shell
   ];
 
-  home.username = "kira";
-  home.homeDirectory = "/home/${config.home.username}";
-  home.stateVersion = "26.11";
+  home = {
+    username = "kira";
+    homeDirectory = "/home/${config.home.username}";
+    stateVersion = "26.11";
+  };
 }

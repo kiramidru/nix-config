@@ -1,4 +1,4 @@
-{ ... }:
+_:
 let
   mod = "Mod4";
   left = "h";
@@ -83,7 +83,11 @@ in
       "XF86AudioNext" = "exec swayosd-client --playerctl next";
       "XF86AudioPrev" = "exec swayosd-client --playerctl prev";
 
-      "Print" = "exec grim";
+      # Screenshotting
+      "${mod}+Shift+s" =
+        "exec grim -g \"$(slurp)\" - | tee \"$HOME/Pictures/Screenshots/screenshot-$(date +'%Y%m%d_%H%M%S').png\" | wl-copy";
+      "Print" =
+        "exec grim - | tee \"$HOME/Pictures/Screenshots/screenshot-$(date +'%Y%m%d_%H%M%S').png\" | wl-copy";
     };
   };
 }

@@ -15,13 +15,19 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix";
+    disko = {
+      url = "github:nix-community/disko";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    disko = {
-      url = "github:nix-community/disko";
+    impermanence = {
+      url = "github:nix-community/impermanence";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
+    stylix = {
+      url = "github:nix-community/stylix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -46,16 +52,15 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    impermanence = {
-      url = "github:nix-community/impermanence";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
-    };
-
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.flake-parts.follows = "flake-parts";
+    };
+
+    zeroclaw = {
+      url = "github:zeroclaw-labs/zeroclaw";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
 
     warehouse-nix = {
@@ -82,19 +87,34 @@
   };
 
   outputs =
-    { self
-    , nixpkgs
-    , home-manager
-    , haumea
-    , agenix
-    , disko
-    , impermanence
-    , secrets-nix
-    , wallpapers
-    , ...
+    {
+      nixpkgs,
+      home-manager,
+      haumea,
+      agenix,
+      disko,
+      impermanence,
+      pre-commit-hooks,
+      secrets-nix,
+      ...
     }@inputs:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
+
+      system = "x86_64-linux";
+      pkgs = nixpkgs.legacyPackages.${system};
+
+      preCommitCheck = pre-commit-hooks.lib.${system}.run {
+        src = ./.;
+        hooks = {
+          nixfmt.enable = true;
+          end-of-file-fixer.enable = true;
+          trim-trailing-whitespace.enable = true;
+          check-merge-conflicts.enable = true;
+          deadnix.enable = true;
+          statix.enable = true;
+        };
+      };
 
       baseSrc = haumea.lib.load {
         src = ./src;
@@ -108,6 +128,13 @@
       };
     in
     {
+      checks.${system}.pre-commit-check = preCommitCheck;
+
+      devShells.${system}.default = pkgs.mkShell {
+        inherit (preCommitCheck) shellHook;
+        buildInputs = preCommitCheck.enabledPackages;
+      };
+
       nixosConfigurations = {
         monolith = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs src; };

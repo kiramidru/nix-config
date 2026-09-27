@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   boot.initrd.kernelModules = [ "amdgpu" ];
 
   boot.blacklistedKernelModules = [

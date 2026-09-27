@@ -28,7 +28,7 @@
       I am developing projects on NixOS. While the code we write (Node, Rust, Python, etc.) is standard, you MUST adhere to the following rules regarding my operating system constraints:
 
       ## 1. No Standard Filesystem Hierarchy (FHS)
-      - NEVER assume the existence of `/bin`, `/usr/bin`, `/lib`, or `/usr/lib`. 
+      - NEVER assume the existence of `/bin`, `/usr/bin`, `/lib`, or `/usr/lib`.
       - Always use `#!/usr/bin/env bash` or `#!/usr/bin/env node` for shebangs, NEVER `#!/bin/bash`.
       - If a build script hardcodes absolute paths to standard Linux utilities, instruct me to patch it or provide a Nix-native workaround.
 
