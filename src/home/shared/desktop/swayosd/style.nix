@@ -1,8 +1,4 @@
-{ config, ... }:
-let
-  color = config.lib.stylix.colors.withHashtag;
-in
-{
+_: {
   services.swayosd.stylePath = builtins.toFile "swayosd-style.css" ''
     window#osd {
       border-radius: 32px;
@@ -29,7 +25,7 @@ in
       border-radius: 0px;
     }
 
-    progressbar progress { 
+    progressbar progress {
       background: #cdd6f4;
     }
   '';

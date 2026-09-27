@@ -8,9 +8,9 @@
     grim
     slurp
     wlsunset
+    wl-clipboard
 
     fastfetch
     ripgrep
-    unrar
   ];
 }

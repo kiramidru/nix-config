@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   programs.nixvim = {
     keymaps = [
       # --- General / Project View ---

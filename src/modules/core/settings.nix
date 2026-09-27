@@ -1,6 +1,7 @@
-{ config
-, pkgs
-, ...
+{
+  config,
+  pkgs,
+  ...
 }:
 {
   nixpkgs.config.permittedInsecurePackages = [
@@ -29,19 +30,23 @@
     Defaults lecture = never
   '';
 
-  users.mutableUsers = false;
-  users.users.root = {
-    hashedPasswordFile = config.age.secrets.root-password.path;
-  };
+  users = {
+    mutableUsers = false;
+    users = {
+      root = {
+        hashedPasswordFile = config.age.secrets.root-password.path;
+      };
 
-  users.users.${config.hostSpec.username} = {
-    hashedPasswordFile = config.age.secrets.kira-password.path;
-    isNormalUser = true;
-    extraGroups = [
-      "wheel"
-    ];
+      ${config.hostSpec.username} = {
+        hashedPasswordFile = config.age.secrets.kira-password.path;
+        isNormalUser = true;
+        extraGroups = [
+          "wheel"
+        ];
 
-    shell = pkgs.fish;
+        shell = pkgs.fish;
+      };
+    };
   };
 
   programs.fish.enable = true;

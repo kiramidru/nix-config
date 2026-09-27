@@ -1,5 +1,4 @@
-{ ... }:
-{
+_: {
   wayland.windowManager.sway.config = {
     input = {
       "type:touchpad" = {
