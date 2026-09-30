@@ -4,7 +4,7 @@
     output = {
       "eDP-1" = {
         res = "1920x1080@120Hz";
-        pos = "1920 0";
+        pos = "0 0";
         bg = "${inputs.wallpapers}/view.jpeg fill";
       };
     };

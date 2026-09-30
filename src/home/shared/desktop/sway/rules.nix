@@ -3,13 +3,13 @@ _: {
     {
       command = "opacity set 0.8";
       criteria = {
-        class = ".*";
+        all = true;
       };
     }
     {
       command = "floating enable, resize set 800 600, move position center";
       criteria = {
-        title = "^impala-float$";
+        title = "^Impala$";
       };
     }
   ];
