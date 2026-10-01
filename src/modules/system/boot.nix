@@ -9,7 +9,7 @@ _: {
       systemd-boot = {
         enable = true;
         consoleMode = "0";
-        configurationLimit = 3;
+        configurationLimit = 10;
       };
       efi.canTouchEfiVariables = true;
     };

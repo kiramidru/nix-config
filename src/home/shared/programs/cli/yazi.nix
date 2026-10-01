@@ -13,27 +13,27 @@
       opener = {
         media = [
           {
-            run = "imv -d \"$@\"";
+            run = "imv -d %s";
             desc = "Open with swayimg";
             orphan = true;
           }
         ];
         open = [
           {
-            run = "xdg-open \"$@\"";
+            run = "xdg-open %s";
             desc = "System Default";
             orphan = true;
           }
         ];
         extract = [
           {
-            run = "ouch decompress \"$@\"";
+            run = "ouch decompress %s";
             desc = "Extract archive";
           }
         ];
         sioyek = [
           {
-            run = "sioyek \"$@\"";
+            run = "sioyek %s";
             desc = "Sioyek";
             orphan = true;
           }
@@ -44,11 +44,11 @@
         rules = [
           {
             mime = "application/pdf";
-            use = [ "sioyek" ];
+            use = "sioyek";
           }
           {
             mime = "application/epub+zip";
-            use = [ "sioyek" ];
+            use = "sioyek";
           }
           {
             mime = "{image,video,audio}/*";
@@ -59,19 +59,21 @@
           }
           {
             mime = "application/{zip,rar,7z*,tar*}";
-            use = [ "extract" ];
+            use = "extract";
           }
           {
             url = "*";
-            use = [ "open" ];
+            use = "open";
           }
         ];
       };
     };
   };
 
-  home.packages = [
-    pkgs.imv
-    pkgs.ouch
+  home.packages = with pkgs; [
+    imv
+    mpv
+    ouch
+    sioyek
   ];
 }

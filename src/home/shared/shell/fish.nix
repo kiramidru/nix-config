@@ -1,12 +1,11 @@
-_: {
+{ config, ... }:
+{
   programs.fish = {
     enable = true;
 
     shellAliases = {
-      ls = "eza --color=auto --icons";
-      ll = "eza -la --icons --git";
-      la = "eza -a --icons";
-      lt = "eza --tree --icons --level=2";
+      ll = "eza -la";
+      lt = "eza --tree --level=2";
 
       grep = "grep --color=auto";
 
@@ -14,7 +13,7 @@ _: {
       "..." = "cd ../..";
       "...." = "cd ../../..";
 
-      rebuild = "sudo SSH_AUTH_SOCK=\$SSH_AUTH_SOCK nixos-rebuild switch --flake .";
+      rebuild = "nh os switch ${config.home.homeDirectory}/nix-config";
     };
 
     interactiveShellInit = ''

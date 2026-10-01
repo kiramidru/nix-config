@@ -6,7 +6,7 @@
     prefix = "C-a";
     baseIndex = 1;
     escapeTime = 0;
-    terminal = "screen-256color";
+    terminal = "tmux-256color";
     keyMode = "vi";
 
     plugins = with pkgs.tmuxPlugins; [
@@ -15,6 +15,9 @@
     ];
 
     extraConfig = ''
+      # Truecolor passthrough for foot
+      set -as terminal-features ",foot*:RGB"
+
       bind | split-window -h -c "#{pane_current_path}"
       bind - split-window -v -c "#{pane_current_path}"
       unbind '"'

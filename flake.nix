@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
 
+    systems.url = "github:nix-systems/default";
+
     # TODO: HANDLE MULTIHOST CONFIG
     flake-parts = {
       url = "github:hercules-ci/flake-parts";
@@ -28,12 +30,17 @@
 
     stylix = {
       url = "github:nix-community/stylix";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
 
     pre-commit-hooks = {
       url = "github:cachix/git-hooks.nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.flake-compat.follows = "";
     };
 
     haumea = {
@@ -44,23 +51,21 @@
     spicetify-nix = {
       url = "github:Gerg-L/spicetify-nix";
       inputs.nixpkgs.follows = "nixpkgs";
+      inputs.systems.follows = "systems";
     };
 
     agenix = {
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
-      inputs.home-manager.follows = "home-manager";
     };
 
     nixvim = {
       url = "github:nix-community/nixvim";
-      inputs.nixpkgs.follows = "nixpkgs";
-      inputs.flake-parts.follows = "flake-parts";
-    };
-
-    zeroclaw = {
-      url = "github:zeroclaw-labs/zeroclaw";
-      inputs.nixpkgs.follows = "nixpkgs";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        flake-parts.follows = "flake-parts";
+        systems.follows = "systems";
+      };
     };
 
     warehouse-nix = {
@@ -87,73 +92,66 @@
   };
 
   outputs =
-    {
+    inputs@{
+      flake-parts,
       nixpkgs,
-      home-manager,
       haumea,
-      agenix,
-      disko,
-      impermanence,
-      pre-commit-hooks,
-      secrets-nix,
       ...
-    }@inputs:
-    let
-      inherit (nixpkgs) lib;
+    }:
+    flake-parts.lib.mkFlake { inherit inputs; } {
+      systems = import inputs.systems;
 
-      system = "x86_64-linux";
-      pkgs = nixpkgs.legacyPackages.${system};
+      imports = [ inputs.pre-commit-hooks.flakeModule ];
 
-      preCommitCheck = pre-commit-hooks.lib.${system}.run {
-        src = ./.;
-        hooks = {
-          nixfmt.enable = true;
-          end-of-file-fixer.enable = true;
-          trim-trailing-whitespace.enable = true;
-          check-merge-conflicts.enable = true;
-          deadnix.enable = true;
-          statix.enable = true;
+      perSystem =
+        { config, pkgs, ... }:
+        {
+          formatter = pkgs.nixfmt-tree;
+
+          # Exposed as checks.<system>.pre-commit
+          pre-commit.settings.hooks = {
+            nixfmt.enable = true;
+            end-of-file-fixer.enable = true;
+            trim-trailing-whitespace.enable = true;
+            check-merge-conflicts.enable = true;
+            deadnix.enable = true;
+            statix.enable = true;
+          };
+
+          devShells.default = pkgs.mkShell {
+            inputsFrom = [ config.pre-commit.devShell ];
+          };
         };
-      };
 
-      baseSrc = haumea.lib.load {
-        src = ./src;
-        loader = _: path: path;
-      };
+      flake =
+        let
+          inherit (nixpkgs) lib;
 
-      pathing = import ./src/lib/pathing.nix { inherit lib; };
+          baseSrc = haumea.lib.load {
+            src = ./src;
+            loader = _: path: path;
+          };
 
-      src = lib.recursiveUpdate baseSrc {
-        lib = pathing;
-      };
-    in
-    {
-      checks.${system}.pre-commit-check = preCommitCheck;
+          src = lib.recursiveUpdate baseSrc {
+            lib = import ./src/lib/pathing.nix { inherit lib; };
+          };
 
-      devShells.${system}.default = pkgs.mkShell {
-        inherit (preCommitCheck) shellHook;
-        buildInputs = preCommitCheck.enabledPackages;
-      };
+          mkHost =
+            name:
+            lib.nixosSystem {
+              specialArgs = { inherit inputs src; };
+              modules = [
+                src.hosts.${name}.configuration
 
-      nixosConfigurations = {
-        monolith = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs src; };
-
-          modules = [
-            { nixpkgs.hostPlatform = "x86_64-linux"; }
-            src.hosts.monolith.configuration
-
-            home-manager.nixosModules.home-manager
-            agenix.nixosModules.default
-            disko.nixosModules.default
-            impermanence.nixosModules.default
-
-            {
-              _module.args.secrets-nix = secrets-nix;
-            }
-          ]
-          ++ (builtins.attrValues src.modules.core);
+                inputs.home-manager.nixosModules.home-manager
+                inputs.agenix.nixosModules.default
+                inputs.disko.nixosModules.default
+                inputs.impermanence.nixosModules.default
+              ];
+            };
+        in
+        {
+          nixosConfigurations = lib.genAttrs [ "monolith" ] mkHost;
         };
-      };
     };
 }

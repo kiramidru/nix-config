@@ -1,7 +1,5 @@
 { lib, pkgs, ... }:
 {
-  environment.systemPackages = [ pkgs.tuigreet ];
-
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -24,11 +22,16 @@
     };
   };
 
+  security.pam.services = {
+    greetd.enableGnomeKeyring = true;
+    swaylock = { };
+  };
+
   services.greetd = {
     enable = true;
     settings = {
       default_session = {
-        command = "${pkgs.tuigreet}/bin/tuigreet --time --remember --asterisks --cmd 'uwsm start sway-uwsm.desktop'";
+        command = "${pkgs.tuigreet}/bin/tuigreet --time --asterisks --user kira --cmd 'uwsm start sway-uwsm.desktop'";
         user = "greeter";
       };
     };

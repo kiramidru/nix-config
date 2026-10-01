@@ -13,7 +13,7 @@ _: {
             "gofumpt"
           ];
           javascript = [ "prettier" ];
-          nix = [ "nixpkgs_fmt" ];
+          nix = [ "nixfmt" ];
           python = [ "ruff_format" ];
           rust = [ "rustfmt" ];
           sql = [ "sqruff" ];

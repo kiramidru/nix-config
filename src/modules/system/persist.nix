@@ -7,6 +7,11 @@ _: {
       "/var/lib/iwd"
       "/var/lib/tailscale"
       "/var/lib/bluetooth"
+      "/var/lib/systemd/timers"
+      "/var/lib/systemd/backlight"
+      "/var/lib/chrony"
+      "/var/lib/fail2ban"
+      "/var/lib/fwupd"
       "/etc/ssh"
     ];
     files = [

@@ -21,9 +21,6 @@ in
       "${mod}+e" = "exec ${term} ${file}";
       "${mod}+Shift+c" = "reload";
 
-      #TODO: FIX THIS
-      "${mod}+n" = "exec toggle_notch power";
-
       # Focus Movement (Vim keys)
       "${mod}+${left}" = "focus left";
       "${mod}+${down}" = "focus down";
