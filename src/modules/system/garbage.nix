@@ -1,8 +1,14 @@
-_: {
-  nix.settings.auto-optimise-store = true;
-  nix.gc = {
-    automatic = true;
-    dates = "weekly";
-    options = "--delete-older-than 7d";
+{ config, ... }:
+{
+  nix.optimise.automatic = true;
+
+  programs.nh = {
+    enable = true;
+    flake = "/home/${config.hostSpec.username}/nix-config";
+    clean = {
+      enable = true;
+      dates = "weekly";
+      extraArgs = "--keep-since 7d --keep 5";
+    };
   };
 }

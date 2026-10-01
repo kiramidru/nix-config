@@ -1,8 +1,12 @@
 _: {
   boot.initrd.systemd.services.restore-root = {
-    description = "Wipe and Recreate Btrfs Root";
+    description = "Archive old Btrfs root and create a fresh one";
     wantedBy = [ "initrd.target" ];
-    after = [ "initrd-root-device.target" ];
+    requires = [ "dev-disk-by\\x2dpartlabel-disk\\x2dmain\\x2droot.device" ];
+    after = [
+      "dev-disk-by\\x2dpartlabel-disk\\x2dmain\\x2droot.device"
+      "initrd-root-device.target"
+    ];
     before = [ "sysroot.mount" ];
 
     unitConfig.DefaultDependencies = false;
@@ -10,20 +14,19 @@ _: {
 
     script = ''
       mkdir -p /mnt
-      # Mount the top-level subvolume
-      mount -o subvol=/ /dev/disk/by-uuid/19cd7a60-2fcc-42e9-a5f6-2aed68d82fe8 /mnt
+      mount -o subvol=/ /dev/disk/by-partlabel/disk-main-root /mnt
 
-      if [ -e /mnt/@ ]; then
+        if [ -e /mnt/@ ]; then
           echo "Scanning for nested subvolumes..."
 
-          btrfs subvolume list -o /mnt/@ | cut -f9 -d' ' | sort -r | while read -r subvolume; do
+            btrfs subvolume list -o /mnt/@ | cut -f9 -d' ' | sort -r | while read -r subvolume; do
               echo "Deleting nested subvolume: /$subvolume"
               btrfs subvolume delete "/mnt/$subvolume"
           done
 
           echo "Deleting main root subvolume (@)..."
           btrfs subvolume delete /mnt/@
-      fi
+        fi
 
       echo "Creating fresh root subvolume (@)..."
       btrfs subvolume create /mnt/@

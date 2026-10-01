@@ -1,6 +1,5 @@
 { config, ... }:
 {
-
   networking.wg-quick.interfaces = {
     proton = {
       address = [ "10.2.0.2/32" ];

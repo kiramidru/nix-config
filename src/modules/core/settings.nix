@@ -1,13 +1,8 @@
-{
-  config,
-  pkgs,
-  ...
+{ config
+, pkgs
+, ...
 }:
 {
-  nixpkgs.config.permittedInsecurePackages = [
-    "electron-39.8.10"
-  ];
-
   nix = {
     extraOptions = ''
       !include ${config.age.secrets.github-token.path}
@@ -19,9 +14,10 @@
         "flakes"
       ];
       warn-dirty = false;
-      trusted-users = [
-        "root"
-        "kira"
+      trusted-users = [ "root" ];
+      extra-substituters = [ "https://devenv.cachix.org" ];
+      extra-trusted-public-keys = [
+        "devenv.cachix.org-1:w1cLUi8dv3hnoSPGAuibQv+f9TZLr6cv/Hm9XgU50cw="
       ];
     };
   };
@@ -38,10 +34,11 @@
       };
 
       ${config.hostSpec.username} = {
-        hashedPasswordFile = config.age.secrets.kira-password.path;
+        hashedPasswordFile = config.age.secrets.user-password.path;
         isNormalUser = true;
         extraGroups = [
           "wheel"
+          "video"
         ];
 
         shell = pkgs.fish;

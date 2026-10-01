@@ -8,7 +8,7 @@
     environmentFile = config.age.secrets.backblaze-bucket.path;
 
     paths = [
-      "/persist/home/kira/Documents"
+      "/persist/home/${config.hostSpec.username}/Documents"
     ];
 
     pruneOpts = [
