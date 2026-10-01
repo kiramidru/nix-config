@@ -1,2 +1,3 @@
 # nix-config
-A shitshow i call my config files
+
+A shitshow I call my config files.

@@ -42,7 +42,7 @@ _: {
                 autoArchive = true;
               };
             };
-            formatting.command = [ "nixpkgs-fmt" ];
+            formatting.command = [ "nixfmt" ];
           };
         };
 

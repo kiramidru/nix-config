@@ -1,4 +1,9 @@
-{ src, config, ... }:
+{
+  src,
+  config,
+  hostSpec,
+  ...
+}:
 {
   imports = [
     src.home.shared.persist
@@ -12,7 +17,7 @@
   ];
 
   home = {
-    username = "kira";
+    inherit (hostSpec) username;
     homeDirectory = "/home/${config.home.username}";
     stateVersion = "26.11";
   };
