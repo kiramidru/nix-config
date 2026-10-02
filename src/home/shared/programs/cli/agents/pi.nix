@@ -15,13 +15,6 @@
           api = "openai-completions";
           apiKey = "!cat ${osConfig.age.secrets.deepseek-key.path}";
           baseUrl = "https://api.deepseek.com";
-          models = [
-            {
-              id = "deepSeek-flash";
-              name = "DeepSeek V4.1 Flash";
-              reasoning = true;
-            }
-          ];
         };
 
         hcnsec = {
@@ -56,7 +49,7 @@
       };
 
       packages = [
-        # Theme
+        # Themes
         "npm:pi-compact-tools"
         "npm:@pi-kaush/pi-welcome-screen"
 
@@ -72,6 +65,9 @@
         "npm:pi-subagents"
         "npm:pi-web-access"
 
+        # Providers
+        "npm:pi-provider-kiro"
+
         # Skills
         "npm:bigpowers"
         "npm:@dietrichgebert/ponytail"
@@ -81,6 +77,7 @@
             "skills/frontend-design/SKILL.md"
             "skills/pdf/SKILL.md"
             "skills/pptx/SKILL.md"
+            "skills/skill-creator/SKILL.md"
           ];
         }
         {
@@ -88,6 +85,12 @@
           skills = [
             "skills/emil-design-eng/SKILL.md"
             "skills/animate/SKILL.md"
+          ];
+        }
+        {
+          source = "git:github.com/latent-spaces/brag";
+          skills = [
+            "skills/brag/SKILL.md"
           ];
         }
       ];
