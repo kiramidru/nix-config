@@ -1,7 +1,7 @@
 _: {
   wayland.windowManager.sway.config.window.commands = [
     {
-      command = "opacity set 0.8";
+      command = "opacity set 1";
       criteria = {
         all = true;
       };
