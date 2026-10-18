@@ -14,6 +14,7 @@ _: {
 
       undofile = true;
       signcolumn = "yes";
+      fillchars = "eob: ";
     };
 
     plugins.web-devicons.enable = true;
