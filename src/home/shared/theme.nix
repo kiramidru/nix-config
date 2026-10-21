@@ -41,7 +41,10 @@
         popups = 10;
       };
     };
-    targets.swaync.enable = false;
+    targets = {
+      swaync.enable = false;
+      librewolf.profileNames = [ "default" ];
+    };
   };
 
   home.pointerCursor.enable = true;
