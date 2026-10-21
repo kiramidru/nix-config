@@ -11,16 +11,16 @@
         IdentityFile = "~/.ssh/id_ed25519";
       };
 
-      "azure-monolith-vm" = {
+      "monolith-vm" = {
         hostname = "20.219.58.158";
         user = "kira";
         identityFile = osConfig.age.secrets.azure-monolith-vm-key.path;
       };
 
-      "minecraft-vm" = {
-        hostname = "68.221.171.186";
+      "gaming-vm" = {
+        hostname = "68.221.160.49";
         user = "kira";
-        identityFile = osConfig.age.secrets.minecraft-vm-key.path;
+        identityFile = osConfig.age.secrets.gaming-vm-key.path;
       };
     };
   };

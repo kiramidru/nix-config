@@ -5,7 +5,6 @@
 
     extraPackages = with pkgs; [
       nodejs
-      bun
       python3
     ];
 
@@ -15,24 +14,6 @@
           api = "openai-completions";
           apiKey = "!cat ${osConfig.age.secrets.deepseek-key.path}";
           baseUrl = "https://api.deepseek.com";
-        };
-
-        hcnsec = {
-          api = "openai-completions";
-          apiKey = "!cat ${osConfig.age.secrets.hcnsec-key.path}";
-          baseUrl = "https://api.hcnsec.cn/v1";
-          models = [
-            {
-              id = "deepSeek-flash";
-              name = "DeepSeek V4.1 Flash";
-              reasoning = true;
-            }
-            {
-              id = "deepSeek-v4-pro";
-              name = "DeepSeek V4 Pro";
-              reasoning = true;
-            }
-          ];
         };
       };
     };
@@ -55,22 +36,20 @@
 
         # Extensions
         "npm:pi-mem"
-        "npm:pi-mcp-adapter"
         "npm:billion-context"
         "npm:@juicesharp/rpiv-ask-user-question"
         "npm:@juicesharp/rpiv-todo"
         "npm:@narumitw/pi-usage"
         "npm:@termdraw/pi"
-        "npm:pi-verdict"
         "npm:pi-subagents"
         "npm:pi-web-access"
 
         # Providers
         "npm:pi-provider-kiro"
+        "npm:pi-antigravity"
+        "npm:pi-opencode-free"
 
         # Skills
-        "npm:bigpowers"
-        "npm:@dietrichgebert/ponytail"
         {
           source = "git:github.com/anthropics/skills";
           skills = [
@@ -85,12 +64,6 @@
           skills = [
             "skills/emil-design-eng/SKILL.md"
             "skills/animate/SKILL.md"
-          ];
-        }
-        {
-          source = "git:github.com/latent-spaces/brag";
-          skills = [
-            "skills/brag/SKILL.md"
           ];
         }
       ];

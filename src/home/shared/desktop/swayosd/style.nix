@@ -1,9 +1,13 @@
-_: {
+{ config, ... }:
+let
+  color = config.lib.stylix.colors.withHashtag;
+in
+{
   services.swayosd.stylePath = builtins.toFile "swayosd-style.css" ''
     window#osd {
       border-radius: 32px;
-      background: rgba(30, 30, 46, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.1);
+      background: ${color.base00}; 
+      border: 1px solid ${color.base02};
     }
 
     #container {
@@ -11,12 +15,12 @@ _: {
     }
 
     label {
-      color: #cdd6f4;
+      color: ${color.base05};
       font-size: 14px;
     }
 
     image {
-      color: #cdd6f4;
+      color: ${color.base05};
       -gtk-icon-transform: scale(0.7);
     }
 
@@ -26,7 +30,7 @@ _: {
     }
 
     progressbar progress {
-      background: #cdd6f4;
+      background: ${color.base05};
     }
   '';
 }

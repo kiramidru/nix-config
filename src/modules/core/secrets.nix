@@ -19,8 +19,7 @@ in
     github-token = mkSecret "github-token" username;
     vpn-credential = mkSecret "vpn-credential" username;
     deepseek-key = mkSecret "deepseek-key" username;
-    hcnsec-key = mkSecret "hcnsec-key" username;
     azure-monolith-vm-key = mkSecret "azure-monolith-vm-key" username;
-    minecraft-vm-key = mkSecret "minecraft-vm-key" username;
+    gaming-vm-key = mkSecret "gaming-vm-key" username;
   };
 }

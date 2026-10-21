@@ -2,10 +2,6 @@
 {
   home.packages = with pkgs; [
     inputs.warehouse-nix.packages.${pkgs.stdenv.hostPlatform.system}.blender
-    aseprite
-    gimp
-    godot_4
-    inkscape
-    krita
+    godot
   ];
 }
