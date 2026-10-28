@@ -9,7 +9,8 @@ in
       font-family: ${config.stylix.fonts.monospace.name}, "JetBrainsMono Nerd Font Propo";
       font-size: 98%;
       font-weight: bold;
-      transition: min-width 0.3s cubic-bezier(.55,-0.68,.48,1.682);
+      transition: min-width 0.3s cubic-bezier(.55,-0.68,.48,1.682),
+        background-color 150ms ease, color 150ms ease;
     }
 
     window#waybar {
@@ -38,10 +39,20 @@ in
       min-width: 32px;
     }
 
+    #workspaces button:hover {
+      background-color: ${color.base02};
+      color: ${color.base0D};
+    }
+
     #workspaces button.focused {
       background-color: ${color.base05};
       color: ${color.base00};
       min-width: 56px;
+    }
+
+    #workspaces button.focused:hover {
+      background-color: ${color.base0D};
+      color: ${color.base00};
     }
 
     #window {
@@ -62,6 +73,39 @@ in
     #custom-swaync,
     #custom-power {
       padding: 6px 16px 8px 13px;
+    }
+
+    #clock:hover,
+    #custom-swaync:hover,
+    #battery:hover {
+      background-color: ${color.base02};
+      color: ${color.base0D};
+    }
+
+    #controls:hover {
+      background-color: ${color.base01};
+    }
+
+    #pulseaudio:hover,
+    #network:hover {
+      color: ${color.base0C};
+    }
+
+    #custom-swaync.notification,
+    #custom-swaync.inhibited-notification {
+      color: ${color.base0D};
+    }
+
+    #custom-swaync.dnd-none,
+    #custom-swaync.dnd-notification,
+    #custom-swaync.dnd-inhibited-none,
+    #custom-swaync.dnd-inhibited-notification {
+      color: ${color.base0A};
+    }
+
+    #custom-power:hover {
+      background-color: alpha(${color.base08}, 0.15);
+      color: ${color.base08};
     }
 
     tooltip {
