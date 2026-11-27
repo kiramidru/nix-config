@@ -10,7 +10,7 @@
         };
         Network = {
           EnableIPv6 = true;
-          RoutePriorityOffset = 100;
+          RoutePriorityOffset = 2000;
         };
       };
     };
@@ -19,7 +19,6 @@
       enable = true;
       allowedTCPPorts = [
         22 # SSH
-        8081 # Expo
       ];
       allowedUDPPorts = [
       ];
@@ -28,7 +27,8 @@
     };
 
     useDHCP = false;
-    # interfaces.enp3s0.useDHCP = true;
+    interfaces.enp3s0.useDHCP = true;
+    dhcpcd.wait = "background";
 
     resolvconf.enable = true;
     nameservers = [

@@ -1,4 +1,4 @@
-_:
+{ pkgs, ... }:
 let
   mod = "Mod4";
   left = "h";
@@ -9,6 +9,55 @@ let
   term = "foot";
   menu = "fuzzel";
   file = "yazi";
+
+  osdControl = pkgs.writeShellApplication {
+    name = "desktop-osd-control";
+    runtimeInputs = with pkgs; [
+      wireplumber
+      brightnessctl
+      coreutils
+      gawk
+    ];
+    text = ''
+      device=@DEFAULT_AUDIO_SINK@
+      style=volume
+      case "''${1:-}" in
+        volume-up) wpctl set-volume --limit 1.0 "$device" 5%+ ;;
+        volume-down) wpctl set-volume "$device" 5%- ;;
+        volume-mute) wpctl set-mute "$device" toggle ;;
+        mic-mute)
+          device=@DEFAULT_AUDIO_SOURCE@
+          style=microphone
+          wpctl set-mute "$device" toggle
+          ;;
+        brightness-up|brightness-down)
+          step=+5%
+          if [[ $1 == brightness-down ]]; then step=5%-; fi
+          brightnessctl --class=backlight --min-value=1 set "$step" >/dev/null
+          style=brightness
+          ;;
+        *) echo "Unknown OSD control: ''${1:-}" >&2; exit 2 ;;
+      esac
+
+      if [[ $style == brightness ]]; then
+        value=$(brightnessctl --class=backlight --machine-readable | awk -F, '{gsub(/%/, "", $4); print $4; exit}')
+      else
+        volume=$(wpctl get-volume "$device")
+        value=$(awk '{v = int($2 * 100 + 0.5); print (v > 100 ? 100 : v)}' <<< "$volume")
+        if [[ $volume == *MUTED* ]]; then
+          value=0
+          style=muted
+        fi
+      fi
+
+      # Audio/backlight control must still work if the OSD is unavailable.
+      # Bound the FIFO write so a missing reader cannot leave a stuck process.
+      fifo="''${XDG_RUNTIME_DIR:?}/wob.sock"
+      if [[ -p $fifo ]]; then
+        printf '%s %s\n' "$value" "$style" | timeout 0.1s tee "$fifo" >/dev/null || true
+      fi
+    '';
+  };
 in
 {
   wayland.windowManager.sway.config = {
@@ -67,18 +116,17 @@ in
       "${mod}+s" = "layout toggle split";
       "${mod}+f" = "fullscreen";
       "${mod}+v" = "floating toggle";
-      "${mod}+p" = "toggle-vpn";
 
       # Media & Hardware (Locked keys work while screen is off/locked)
-      "XF86MonBrightnessDown" = "exec swayosd-client --brightness lower";
-      "XF86MonBrightnessUp" = "exec swayosd-client --brightness raise";
-      "XF86AudioMute" = "exec swayosd-client --output-volume mute-toggle";
-      "XF86AudioLowerVolume" = "exec swayosd-client --output-volume lower";
-      "XF86AudioRaiseVolume" = "exec swayosd-client --output-volume raise";
-      "XF86AudioMicMute" = "exec swayosd-client --input-volume mute-toggle";
-      "XF86AudioPlay" = "exec swayosd-client --playerctl play-pause";
-      "XF86AudioNext" = "exec swayosd-client --playerctl next";
-      "XF86AudioPrev" = "exec swayosd-client --playerctl prev";
+      "--locked XF86MonBrightnessDown" = "exec ${osdControl}/bin/desktop-osd-control brightness-down";
+      "--locked XF86MonBrightnessUp" = "exec ${osdControl}/bin/desktop-osd-control brightness-up";
+      "--locked XF86AudioMute" = "exec ${osdControl}/bin/desktop-osd-control volume-mute";
+      "--locked XF86AudioLowerVolume" = "exec ${osdControl}/bin/desktop-osd-control volume-down";
+      "--locked XF86AudioRaiseVolume" = "exec ${osdControl}/bin/desktop-osd-control volume-up";
+      "--locked XF86AudioMicMute" = "exec ${osdControl}/bin/desktop-osd-control mic-mute";
+      "--locked XF86AudioPlay" = "exec ${pkgs.playerctl}/bin/playerctl play-pause";
+      "--locked XF86AudioNext" = "exec ${pkgs.playerctl}/bin/playerctl next";
+      "--locked XF86AudioPrev" = "exec ${pkgs.playerctl}/bin/playerctl previous";
 
       # Screenshotting
       "${mod}+Shift+s" =

@@ -14,8 +14,6 @@ in
   age.secrets = {
     root-password = mkSecret "root-password" "root";
     user-password = mkSecret "${username}-password" "root";
-    restic-password = mkSecret "restic-password" "root";
-    backblaze-bucket = mkSecret "backblaze-bucket" "root";
     github-token = mkSecret "github-token" username;
     vpn-credential = mkSecret "vpn-credential" username;
     deepseek-key = mkSecret "deepseek-key" username;

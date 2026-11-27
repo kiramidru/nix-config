@@ -15,6 +15,7 @@ _: {
       modules-left = [
         "clock"
         "sway/workspaces"
+        "tray"
       ];
 
       modules-center = [ "sway/window" ];
@@ -57,6 +58,12 @@ _: {
           "4" = [ ];
           "5" = [ ];
         };
+      };
+
+      "tray" = {
+        icon-size = 20;
+        spacing = 8;
+        show-passive-items = true;
       };
 
       "sway/window" = {
@@ -114,8 +121,10 @@ _: {
       };
 
       "network" = {
-        format = "{icon} {essid}";
-        format-ethernet = "󰈀  {ifname}";
+        # Leave interface unset so Waybar follows the default route.
+        format = "{icon} {ifname}";
+        format-wifi = "{icon} {essid}";
+        format-ethernet = "󰈀 Ethernet";
         format-disconnected = "󰤮";
         format-icons = {
           default = [
@@ -126,7 +135,10 @@ _: {
           ];
         };
         interval = 1;
-        tooltip-format = "↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}";
+        tooltip-format = "{ifname}: {ipaddr}\n↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}";
+        tooltip-format-wifi = "Wi-Fi: {essid} ({signalStrength}%)\n{ifname}: {ipaddr}\n↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}";
+        tooltip-format-ethernet = "Ethernet: {ifname}\n{ipaddr}/{cidr}\n↓ {bandwidthDownBytes}\n↑ {bandwidthUpBytes}";
+        tooltip-format-disconnected = "Disconnected";
         on-click = "setsid foot --title 'Impala' impala";
       };
 

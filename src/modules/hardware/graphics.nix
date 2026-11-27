@@ -1,12 +1,19 @@
 _: {
-  boot.initrd.kernelModules = [ "amdgpu" ];
+  services.xserver.videoDrivers = [ "nvidia" ];
+  hardware.nvidia = {
+    modesetting.enable = true;
+    open = true;
+    nvidiaSettings = true;
+    prime = {
+      offload = {
+        enable = true;
+        enableOffloadCmd = true;
+      };
 
-  boot.blacklistedKernelModules = [
-    "nouveau"
-    "nvidia"
-    "nvidia_drm"
-    "nvidia_modeset"
-  ];
+      nvidiaBusId = "PCI:1:0:0";
+      amdgpuBusId = "PCI:6:0:0";
+    };
+  };
 
   hardware.graphics = {
     enable = true;

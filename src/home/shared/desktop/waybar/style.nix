@@ -9,8 +9,7 @@ in
       font-family: ${config.stylix.fonts.monospace.name}, "JetBrainsMono Nerd Font Propo";
       font-size: 98%;
       font-weight: bold;
-      transition: min-width 0.3s cubic-bezier(.55,-0.68,.48,1.682),
-        background-color 150ms ease, color 150ms ease;
+      transition: min-width 0.3s cubic-bezier(.55,-0.68,.48,1.682);
     }
 
     window#waybar {
@@ -50,11 +49,6 @@ in
       min-width: 56px;
     }
 
-    #workspaces button.focused:hover {
-      background-color: ${color.base0D};
-      color: ${color.base00};
-    }
-
     #window {
       color: ${color.base04};
       font-style: italic;
@@ -62,6 +56,32 @@ in
 
     window#waybar.empty #window {
       background-color: transparent;
+    }
+
+    #tray {
+      border-radius: 999px;
+      background-color: ${color.base00};
+      padding: 6px 12px;
+    }
+
+    #tray menu {
+      background-color: ${color.base00};
+      color: ${color.base05};
+      border: 1px solid ${color.base02};
+      border-radius: 8px;
+      padding: 4px;
+    }
+
+    #tray menuitem {
+      padding: 6px 10px;
+    }
+
+    #tray menuitem:hover {
+      background-color: ${color.base02};
+    }
+
+    #tray menuitem:disabled {
+      color: ${color.base03};
     }
 
     #controls {
@@ -73,6 +93,17 @@ in
     #custom-swaync,
     #custom-power {
       padding: 6px 16px 8px 13px;
+    }
+
+    #clock,
+    #custom-swaync,
+    #battery,
+    #controls,
+    #pulseaudio,
+    #network,
+    #custom-power {
+      transition: min-width 0.3s cubic-bezier(.55,-0.68,.48,1.682),
+        background-color 150ms ease, color 150ms ease;
     }
 
     #clock:hover,

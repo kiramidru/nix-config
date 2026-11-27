@@ -80,6 +80,11 @@
       inputs.flake-parts.follows = "flake-parts";
     };
 
+    antigravity-cli-nix = {
+      url = "github:nklmilojevic/antigravity-cli-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
     wallpapers = {
       url = "github:kiramidru/wallpapers";
       flake = false;

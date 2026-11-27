@@ -18,6 +18,7 @@
         prettyName = "SwayFX";
         comment = "SwayFX managed by UWSM";
         binPath = "${pkgs.swayfx}/bin/sway";
+        extraArgs = [ "--unsupported-gpu" ];
       };
     };
   };

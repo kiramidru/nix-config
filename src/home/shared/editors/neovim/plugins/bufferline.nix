@@ -7,8 +7,8 @@ _: {
         options = {
           numbers = "ordinal";
 
-          close_command = "bdelete! %d";
-          right_mouse_command = "bdelete! %d";
+          close_command = "bdelete %d";
+          right_mouse_command = "bdelete %d";
         };
       };
     };

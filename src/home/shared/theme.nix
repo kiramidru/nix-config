@@ -42,6 +42,7 @@
       };
     };
     targets = {
+      wayprompt.enable = false;
       swaync.enable = false;
       librewolf.profileNames = [ "default" ];
     };

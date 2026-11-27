@@ -1,4 +1,4 @@
-{ pkgs, osConfig, ... }:
+{ pkgs, ... }:
 {
   programs.pi-coding-agent = {
     enable = true;
@@ -7,16 +7,6 @@
       nodejs
       python3
     ];
-
-    models = {
-      providers = {
-        deepseek = {
-          api = "openai-completions";
-          apiKey = "!cat ${osConfig.age.secrets.deepseek-key.path}";
-          baseUrl = "https://api.deepseek.com";
-        };
-      };
-    };
 
     settings = {
       quietStartup = true;
@@ -36,7 +26,6 @@
 
         # Extensions
         "npm:pi-mem"
-        "npm:billion-context"
         "npm:@juicesharp/rpiv-ask-user-question"
         "npm:@juicesharp/rpiv-todo"
         "npm:@narumitw/pi-usage"
@@ -46,8 +35,6 @@
 
         # Providers
         "npm:pi-provider-kiro"
-        "npm:pi-antigravity"
-        "npm:pi-opencode-free"
 
         # Skills
         {
@@ -57,13 +44,6 @@
             "skills/pdf/SKILL.md"
             "skills/pptx/SKILL.md"
             "skills/skill-creator/SKILL.md"
-          ];
-        }
-        {
-          source = "git:github.com/emilkowalski/skills";
-          skills = [
-            "skills/emil-design-eng/SKILL.md"
-            "skills/animate/SKILL.md"
           ];
         }
       ];

@@ -85,8 +85,8 @@ _: {
           installRustc = false;
           settings = {
             cargo.allFeatures = true;
-            checkOnSave = {
-              enable = true;
+            checkOnSave = true;
+            check = {
               command = "clippy";
             };
             procMacro.enable = true;

@@ -3,6 +3,8 @@
   home.packages = with pkgs; [
     brightnessctl
     playerctl
+    pulsemixer
+    pavucontrol
     impala
     bluetui
     grim

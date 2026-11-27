@@ -1,26 +1,17 @@
-{ pkgs, config, ... }:
+{ pkgs, ... }:
 {
   programs.mcp = {
     enable = true;
     servers = {
-      filesystem = {
+      godot = {
         command = "${pkgs.nodejs}/bin/npx";
         args = [
           "-y"
-          "@modelcontextprotocol/server-filesystem"
-          "${config.home.homeDirectory}/projects"
+          "godot-mcp-cli"
         ];
-      };
-
-      playwright = {
-        command = "${pkgs.nodejs}/bin/npx";
-        args = [
-          "-y"
-          "@playwright/mcp"
-          "--headless"
-          "--executable-path"
-          "${pkgs.chromium}/bin/chromium"
-        ];
+        environment = {
+          MCP_TRANSPORT = "stdio";
+        };
       };
     };
   };
